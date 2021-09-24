@@ -1,0 +1,74 @@
+.navbar-container{
+    display: flex;
+    justify-content: center;
+    border-bottom: .5px solid rgba(0,0,0,0.2);
+    background-color: white;
+    box-shadow:0px 1px 1px rgba(0,0,0,0.1);
+}
+.navbar-wrapper{
+
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;
+    align-items: center;
+}
+
+.navbar-logo-image {
+    /* width: 40px; */
+    max-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+
+}
+
+.navbar-logo-wrapper img{
+    object-fit: cover;
+    border-radius: 10px ;
+}
+.navbar-logo-wrapper {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0 10px 12vw;
+   
+}
+
+.navbar-buttons-wrapper a {
+    text-decoration: none;
+}
+
+.navbar-buttons-wrapper {
+    width: 278px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 9vw;
+   
+}
+.navbar-buttons-wrapper-button {
+    
+    border-radius: 50%;
+    color: #3ab122;
+   
+    /* display flex causes underline to show ...address this by line 49*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.navbar-buttons-wrapper i{
+    height: 5px;
+    width: 5px;
+    padding: 3px;
+}
+
+.logout-button{
+    margin-top: 10px;
+    border-radius: 5px;
+    
+    color: #0a0c0a;
+}
