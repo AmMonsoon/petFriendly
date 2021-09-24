@@ -48,7 +48,7 @@ def upgrade():
     sa.Column('state', sa.Text(), nullable=False),
     sa.Column('country', sa.Text(), nullable=False),
     sa.Column('name', sa.Text(), nullable=False),
-    sa.Column('price', sa.Numeric(), nullable=False),
+    sa.Column('price', sa.String(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.add_column('users', sa.Column('firstName', sa.String(length=50), nullable=False))
