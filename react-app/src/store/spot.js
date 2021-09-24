@@ -38,7 +38,7 @@ export const addNewSpot = (spotPayload) => async(dispatch) => {
 }
 
 export const fetchAllSpots = () => async (dispatch) => {
-    const res = await fetch(`/api/spots`)
+    const res = await fetch(`/api/spots/`)
     if (res.ok){
     const {spots} = await res.json()
     dispatch(getAllSpots(spots))
