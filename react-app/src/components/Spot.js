@@ -19,7 +19,7 @@ const Spot = () => {
         // }
 
         (async () => {
-            await dispatch(fetchAllSpots(spots));
+            await dispatch(fetchAllSpots());
           })();
     },[dispatch])
    
@@ -35,7 +35,7 @@ const handleClick = (e) =>{
             {spots && spots?.map(spot =>               
                     <div className='spots-div' key={spot.id}  >
                         {/* <h4>{spot.name}</h4> */}
-                        <img src={spot.image[0]?.imageUrl} onClick={handleClick} id={spot.id} alt=''  />        
+                        <img src={spot?.image?.[0]?.imageUrl} onClick={handleClick} id={spot.id} alt=''  />        
                         {/* <h3>{spot.address}</h3> */}
                         
                         <p>{spot.city}, {spot.state}</p>

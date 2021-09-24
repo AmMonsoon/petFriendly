@@ -56,6 +56,20 @@ export const fetchSpot = (spotId) => async (dispatch) => {
     }
     return
 }
+
+export const patchSpot = (price, spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}`,{
+        method: 'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({price})
+    })
+    if(res.ok){
+        const spot = await res.json()
+        dispatch(getSpot(spot))
+        return spot
+    }
+}
+
 export const destroySpot = (spotId) => async(dispatch) => {
     await fetch(`/api/spots/${spotId}`,
     {
@@ -69,23 +83,21 @@ const initialState = {}
 const spotReducer = (state = initialState, action) => {
     let newState = {...state}
     switch (action.type) {
-        case GET_SPOT:
-            
+        case GET_SPOT:   
             newState = action.spot
             return newState
-        case ALL_SPOTS:
-            
+        case ALL_SPOTS:           
             action.spots.forEach(spot => {
                 newState[spot.id] = spot
             })
-            // newState = action.spots
             return newState
         case ADD_SPOT:
             newState[action.spot.id] = action.spot
             return newState
         case DELETE_SPOT:
                 delete newState[action.spotId]
-            return newState    
+            return newState
+
         default: return state
         }
             

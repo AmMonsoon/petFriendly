@@ -31,6 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* <NavBar /> */}
+    <div className='page-container'>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -59,6 +60,7 @@ function App() {
           <SingleSpot />
         </ProtectedRoute>
       </Switch>
+    </div>
     </BrowserRouter>
   );
 }

@@ -13,8 +13,8 @@
 
 .spots-div{
     
-    padding-left: 1em;
-    background-color: white;
+    /* padding-left: 1em; */
+    /* background-color: white; */
     display: flex;
     flex-direction: column;
     height: 100%;
