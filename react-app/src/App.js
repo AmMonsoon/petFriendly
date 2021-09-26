@@ -57,6 +57,7 @@ function App() {
           <CreateSpot />
         </ProtectedRoute>
         <ProtectedRoute path='/spots/:spotId' exact={true}>
+        <NavBar userId={currentUser?.id}/>
           <SingleSpot />
         </ProtectedRoute>
       </Switch>

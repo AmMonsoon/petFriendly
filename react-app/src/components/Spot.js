@@ -38,10 +38,12 @@ const handleClick = (e) =>{
                         <img src={spot?.image?.[0]?.imageUrl} onClick={handleClick} id={spot.id} alt=''  />        
                         {/* <h3>{spot.address}</h3> */}
                         
-                        <p>{spot.city}, {spot.state}</p>
-                        
+                        <p id='spot-location'>{spot.city}, {spot.state}</p>
+                        <div id='spot-price'>
+                        <p>{spot.price} / night</p> 
+                        </div>
                         {/* <p>{spot.country}</p> */}
-                        {/* <p>{spot.price}</p>  */}
+                        
                                      
                     </div>
                 
