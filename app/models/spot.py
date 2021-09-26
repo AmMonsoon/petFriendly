@@ -14,8 +14,8 @@ class Spot(db.Model):
     
     user = db.relationship("User", back_populates="spot")
     review = db.relationship("Review", cascade="all,delete", back_populates="reviewer" )
-    image = db.relationship("Image", back_populates="pic")
-    booking = db.relationship("Booking", back_populates="booker")
+    image = db.relationship("Image", cascade="all,delete",back_populates="pic")
+    booking = db.relationship("Booking",cascade="all,delete", back_populates= "booker")
 
 
     def to_dict_spot(self):

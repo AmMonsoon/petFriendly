@@ -8,13 +8,13 @@ const NavBar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-wrapper">
+        <div className="navbar-logo-wrapper">
           <NavLink to='/spots' exact={true} activeClassName='active'>
-        <div className="navbar__logo--wrapper">
             <img className="navbar-logo-image" src={logo} alt=""/>
-        </div>
           </NavLink>
+        </div>
 
-        {/* <div className="navbar__searchToBe"></div> */}
+        
         <div className="navbar-buttons-wrapper">
             <NavLink to='/spots' exact={true} activeClassName='active'>
               <div className="navbar-buttons-wrapper-button">
@@ -41,7 +41,7 @@ const NavBar = () => {
           <div className="logout-button"><LogoutButton /></div>
         </div>
       </div>
-    </div>
+     </div>
   );
 }
 

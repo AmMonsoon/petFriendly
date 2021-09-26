@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Spot,db, Image
+from app.models import Spot,db, Image, image
 from sqlalchemy import orm
 from flask_login import current_user
 from datetime import datetime
@@ -45,6 +45,19 @@ def post_spot():
     db.session.commit()
    
     return spot.to_dict_spot()
+
+
+@spots_routes.route('/<int:id>', methods=['PATCH'])
+def update_spot(id):
+    updated_spot = request.json['price']
+    spot = Spot.query.options(orm.joinedload('user')).get(id)
+    spot.price = updated_spot
+    db.session.add(spot)
+    db.session.commit()
+
+    return spot.to_dict_spot()
+
+
 
 @spots_routes.route('/<int:id>' , methods=['DELETE'])
 def delete_spot(id):
