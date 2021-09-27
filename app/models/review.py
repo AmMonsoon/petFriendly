@@ -12,3 +12,19 @@ class Review(db.Model):
     user = db.relationship("User", back_populates="review")
     reviewer = db.relationship("Spot", back_populates="review")
     
+
+    def review_to_dict(self):
+        return {
+            'id': self.id,
+            'userId': self.userId,
+            'spotId': self.spotId,
+            'review': self.review,
+        }
+    def review_to_dict_inc_user(self):
+        return {
+            'id': self.id,
+            'userId': self.userId,
+            'spotId': self.spotId,
+            'review': self.review,
+            'user': self.user.to_dict(),
+        }

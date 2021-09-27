@@ -2,11 +2,12 @@
 import React,  { useEffect, useState }   from 'react';
 import { useSelector , useDispatch} from 'react-redux';
 import { useParams , useHistory} from 'react-router-dom';
-import { fetchAllSpots, fetchSpot } from '../store/spot';
+import { fetchSpot } from '../store/spot';
 import { destroySpot } from '../store/spot';
-import { patchSpot } from '../store/spot';
+// import { patchSpot } from '../store/spot';
 import EditSpotForm from './EditSpotForm';
-
+import Review from './Review';
+import { getAllReviews } from '../store/spot';
 const SingleSpot = () => {
     const {spotId} = useParams()
     const history = useHistory()
@@ -18,15 +19,18 @@ const SingleSpot = () => {
     
 
 
-    useEffect( async () => {
+    useEffect(() => {
        
 
         (async () => {
+
             await dispatch(fetchSpot(spotId));
+            await dispatch(getAllReviews(spotId))
+
           })();
     },[spotId,dispatch])
 
-   
+
 
     const deleteSpot = async(e) =>{
         e.preventDefault()
@@ -63,7 +67,7 @@ const SingleSpot = () => {
             <div className='single-spot-container'>
                 <div key={spot?.id}>
                     
-                  { spot.image && spot.image.map(image =>   <img src={image?.imageUrl} alt='' /> )}      
+                  { spot.image && spot.image.map(image =>   <img src={image?.imageUrl} alt='' key={spot?.id}/> )}      
                     <h3>{spot?.address}</h3>
                     <h4>{spot?.name}</h4>
                     <p>{spot?.city}</p>
@@ -71,7 +75,9 @@ const SingleSpot = () => {
                     <p>{spot?.country}</p>
                     {/* <p>{spot?.price}</p> */}
                    <div>{priceContent}</div>
-                   
+                   <div>
+                       <Review />
+                   </div>
                     <div className="delete-spot">
                         {
                             user.id === spot?.userId &&  <button className="delete-spot-btn" onClick={e => deleteSpot(e)}>Delete Spot</button>
