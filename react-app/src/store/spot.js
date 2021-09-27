@@ -154,14 +154,14 @@ const spotReducer = (state = initialState, action) => {
             //     newState[rev.id] = rev
             // })    
 
+            newState.reviews = {}
             Object.values(action.data.reviews).forEach(review => {
-                console.log('33333333333333333',review)
+                
                 // const reviewSpotId = review.spotId                
-                newState.reviews = {}
                 newState.reviews[review.id] = review
                 
             })
-            
+
             return newState
         case ADD_REVIEW:
             newState.reviews[action.data.review.id] = action.data.review

@@ -97,12 +97,13 @@ def add_review(id):
 
 @spots_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['PATCH'])
 def edit_review(id, reviewId):
+    
     reviewToEdit = Review.query.get(reviewId)
     edittedReview = request.json['reviewBody']
-    reviewToEdit.reviewBody = edittedReview
+    reviewToEdit.review = edittedReview
     print('^^^^^^^^^^^^',reviewToEdit)
     print('<<<<<<<<<<<<<',reviewId)
-    print('>>>>>>>>>>>>',reviewToEdit.reviewBody)
+    # print('>>>>>>>>>>>>',reviewToEdit.reviewBody)
 
     db.session.add(reviewToEdit)
     db.session.commit()
