@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import Spot,db, Image, image
+from app.models import Spot, db, Image, Review, User
 from sqlalchemy import orm
 from flask_login import current_user
 from datetime import datetime
@@ -66,3 +66,32 @@ def delete_spot(id):
     db.session.commit()
     return "spot deleted"
 
+
+@spots_routes.route('/<int:id>/reviews')
+def get_reviews(id):
+    reviews = Review.query.filter(Review.spotId == id).all()
+    # reviewPayload = {}
+    # for review in reviews:
+    #     reviewUser = User.query.filter(User.id == review.userId).first()
+    #     review.user = reviewUser.to_dict()
+    #     reviewPayload[review.id] = review.review_to_dict_inc_user()
+    return {'reviews': [review.review_to_dict_inc_user() for review in reviews]}
+
+
+@spots_routes.route('/<int:id>/reviews/add', methods=['POST'])
+def add_review(id):
+    data = request.json
+    review = Review(
+        userId=current_user.id,
+        spotId=id,
+        review=data['review']
+    )
+
+    db.session.add(review)
+    db.session.commit()
+    
+    reviewUser = User.query.filter(User.id == review.userId).first()
+    review.user = reviewUser.to_dict()
+    payload = review.review_to_dict_inc_user()
+    return payload
+    

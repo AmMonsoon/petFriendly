@@ -1,8 +1,17 @@
 const GET_SPOT = 'spots/GET_SPOT'
 const ALL_SPOTS = 'spots/ALL_SPOTS'
 const ADD_SPOT = 'spots/ADD_SPOT'
-const DELETE_SPOT = 'images/DELETE_SPOT'
+const DELETE_SPOT = 'spots/DELETE_SPOT'
+const GET_REVIEWS = 'spots/GET_REVIEWS'
+const ADD_REVIEW = 'spots/ADD_REVIEW'
 
+const addReview = (review, spotId) => ({
+    type: ADD_REVIEW,
+    data: {
+        review,
+        spotId
+    }
+})
 
 const getSpot = (spot) => ({
     type: GET_SPOT,
@@ -23,6 +32,19 @@ const deleteSpot = (spotId) => ({
     type: DELETE_SPOT,
     spotId
 })
+
+const getReviews = (reviews) => ({
+    type: GET_REVIEWS,
+    data: reviews
+})
+
+export const getAllReviews = (spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/reviews`)
+    const reviews = await res.json()
+    console.log('@@@@@@@@@@@@@@@@@', reviews)
+    dispatch(getReviews(reviews))
+    return reviews
+}
 
 export const addNewSpot = (spotPayload) => async(dispatch) => {
     const res = await fetch('/api/spots/add', {
@@ -79,6 +101,17 @@ export const destroySpot = (spotId) => async(dispatch) => {
     return
 }
 
+export const addNewReview = (review, spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/reviews/add`, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(review)
+    })
+    const newReview = await res.json()
+    dispatch(addReview(newReview, spotId))
+}
+
+
 const initialState = {}
 const spotReducer = (state = initialState, action) => {
     let newState = {...state}
@@ -97,7 +130,17 @@ const spotReducer = (state = initialState, action) => {
         case DELETE_SPOT:
                 delete newState[action.spotId]
             return newState
-
+        case GET_REVIEWS:
+            Object.values(action.data.reviews).forEach(review => {
+                const reviewSpotId = review.spotId
+                console.log('&&&&&&&&&&&&&&',reviewSpotId)
+                newState.reviews = {}
+                newState.reviews[review.id] = review
+            })
+        case ADD_REVIEW:
+            
+            // newState[action.data.spotId].review[action.data.review.id] = action.data.review
+            return newState
         default: return state
         }
             

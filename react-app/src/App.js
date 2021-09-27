@@ -60,6 +60,10 @@ function App() {
         <NavBar userId={currentUser?.id}/>
           <SingleSpot />
         </ProtectedRoute>
+        <ProtectedRoute path='/spots/:spotId/reviews' exact={true}>
+        <NavBar userId={currentUser?.id}/>
+          <SingleSpot />
+        </ProtectedRoute>
       </Switch>
     </div>
     </BrowserRouter>
