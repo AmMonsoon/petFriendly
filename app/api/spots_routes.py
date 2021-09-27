@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint, request
 from app.models import Spot, db, Image, Review, User
 from sqlalchemy import orm
@@ -81,6 +82,7 @@ def get_reviews(id):
 @spots_routes.route('/<int:id>/reviews/add', methods=['POST'])
 def add_review(id):
     data = request.json
+
     review = Review(
         userId=current_user.id,
         spotId=id,
@@ -90,8 +92,19 @@ def add_review(id):
     db.session.add(review)
     db.session.commit()
     
-    reviewUser = User.query.filter(User.id == review.userId).first()
-    review.user = reviewUser.to_dict()
-    payload = review.review_to_dict_inc_user()
-    return payload
-    
+     
+    return review.review_to_dict_inc_user()
+
+@spots_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['PATCH'])
+def edit_review(id, reviewId):
+    reviewToEdit = Review.query.get(reviewId)
+    edittedReview = request.json['reviewBody']
+    reviewToEdit.reviewBody = edittedReview
+    print('^^^^^^^^^^^^',reviewToEdit)
+    print('<<<<<<<<<<<<<',reviewId)
+    print('>>>>>>>>>>>>',reviewToEdit.reviewBody)
+
+    db.session.add(reviewToEdit)
+    db.session.commit()
+   
+    return reviewToEdit.review_to_dict_inc_user()

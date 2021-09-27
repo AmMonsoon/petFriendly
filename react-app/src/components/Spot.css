@@ -19,10 +19,10 @@
     grid-gap: 4%;
     margin-bottom: -2%;
     grid-template-areas: 
-    "photo photo photo photo" 
-    "photo photo photo photo" 
-    "photo photo photo photo"
-    "photo photo photo photo"
+    "photo photo photo photo photo" 
+    "photo photo photo photo photo" 
+    "photo photo photo photo photo"
+    "photo photo photo photo photo"
     
 }
 

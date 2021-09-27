@@ -16,7 +16,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user)
-
+  
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
