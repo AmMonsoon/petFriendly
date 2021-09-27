@@ -8,6 +8,7 @@ import { destroySpot } from '../store/spot';
 import EditSpotForm from './EditSpotForm';
 import Review from './Review';
 import { getAllReviews } from '../store/spot';
+import EditReviewForm from './EditReviewForm';
 const SingleSpot = () => {
     const {spotId} = useParams()
     const history = useHistory()
@@ -77,6 +78,7 @@ const SingleSpot = () => {
                    <div>{priceContent}</div>
                    <div>
                        <Review />
+                      
                    </div>
                     <div className="delete-spot">
                         {

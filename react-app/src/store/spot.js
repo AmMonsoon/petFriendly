@@ -4,6 +4,7 @@ const ADD_SPOT = 'spots/ADD_SPOT'
 const DELETE_SPOT = 'spots/DELETE_SPOT'
 const GET_REVIEWS = 'spots/GET_REVIEWS'
 const ADD_REVIEW = 'spots/ADD_REVIEW'
+const EDIT_REVIEW = 'spots/EDIT_ REVIEW'
 
 const addReview = (review, spotId) => ({
     type: ADD_REVIEW,
@@ -11,6 +12,11 @@ const addReview = (review, spotId) => ({
         review,
         spotId
     }
+})
+
+const editReview = (review) => ({
+    type: EDIT_REVIEW,
+        review
 })
 
 const getSpot = (spot) => ({
@@ -38,10 +44,20 @@ const getReviews = (reviews) => ({
     data: reviews
 })
 
+export const editAReview = (reviewBody, reviewId, spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/reviews/${reviewId}`, {
+        method: "PATCH",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({reviewBody})
+    })
+    const edittedReview = await res.json()
+    dispatch(editReview(edittedReview))
+}
+
 export const getAllReviews = (spotId) => async(dispatch) => {
     const res = await fetch(`/api/spots/${spotId}/reviews`)
     const reviews = await res.json()
-    console.log('@@@@@@@@@@@@@@@@@', reviews)
+    
     dispatch(getReviews(reviews))
     return reviews
 }
@@ -131,15 +147,27 @@ const spotReducer = (state = initialState, action) => {
                 delete newState[action.spotId]
             return newState
         case GET_REVIEWS:
+
+            // const newState = {}
+            // const reviews = action.reviews
+            // reviews.forEach(rev => {
+            //     newState[rev.id] = rev
+            // })    
+
             Object.values(action.data.reviews).forEach(review => {
-                const reviewSpotId = review.spotId
-                console.log('&&&&&&&&&&&&&&',reviewSpotId)
+                console.log('33333333333333333',review)
+                // const reviewSpotId = review.spotId                
                 newState.reviews = {}
                 newState.reviews[review.id] = review
+                
             })
-        case ADD_REVIEW:
             
-            // newState[action.data.spotId].review[action.data.review.id] = action.data.review
+            return newState
+        case ADD_REVIEW:
+            newState.reviews[action.data.review.id] = action.data.review
+            return newState
+        case EDIT_REVIEW:
+            newState.reviews[action.review.id] = action.review
             return newState
         default: return state
         }
