@@ -1,0 +1,65 @@
+
+#modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  #modal-content {
+    position: absolute;
+    /* background-color:white; */
+  }
+
+
+.delete-confirm{
+padding: 30% 35% 15%; 
+margin: 10%;
+height: 250px;
+width: 200px;
+background-color: rgb(240, 240, 245);
+border-radius: 5px;
+}
+.delete-confirm h2{
+  margin-left: 20px;
+  
+}
+.delete-modal-btn-container{
+  display: flex;
+  justify-content: center;
+}
+.delete-modal-btn-container button{
+  color: white;
+  border: 1px solid rgb(153, 152, 152);
+  border-radius: 5px;
+  padding: 4%;
+  cursor: pointer;
+}
+.delete-modal-confirm-btn{ 
+  margin: 0 5px;
+  background-color: crimson;
+}
+.delete-modal-cancel-btn{
+  margin: 0 5px;
+  background-color: darkgrey;
+}
+.delete-modal-image img{
+  object-fit: cover;
+  margin-left: 20px;
+  height: 150px;
+  width: 150px;
+  border-radius: 75px;
+}

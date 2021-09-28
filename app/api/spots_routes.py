@@ -109,3 +109,10 @@ def edit_review(id, reviewId):
     db.session.commit()
    
     return reviewToEdit.review_to_dict_inc_user()
+
+@spots_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['DELETE'])
+def delete_review(id, reviewId):
+    reviewToDelete = Review.query.get(reviewId)
+    db.session.delete(reviewToDelete)
+    db.session.commit()
+    return "YES, DELETED"

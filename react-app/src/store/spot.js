@@ -5,6 +5,8 @@ const DELETE_SPOT = 'spots/DELETE_SPOT'
 const GET_REVIEWS = 'spots/GET_REVIEWS'
 const ADD_REVIEW = 'spots/ADD_REVIEW'
 const EDIT_REVIEW = 'spots/EDIT_ REVIEW'
+const REMOVE_REVIEW = 'spots/REMOVE_REVIEW'
+
 
 const addReview = (review, spotId) => ({
     type: ADD_REVIEW,
@@ -17,6 +19,14 @@ const addReview = (review, spotId) => ({
 const editReview = (review) => ({
     type: EDIT_REVIEW,
         review
+})
+
+const deleteReview = (reviewId, spotId) => ({
+    type: REMOVE_REVIEW,
+    data: {
+        reviewId,
+        spotId
+    }
 })
 
 const getSpot = (spot) => ({
@@ -43,6 +53,16 @@ const getReviews = (reviews) => ({
     type: GET_REVIEWS,
     data: reviews
 })
+
+export const deleteAReview = (reviewId, spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/reviews/${reviewId}`, {
+        method: "DELETE"
+    })
+    if(res.ok) {
+        dispatch(deleteReview(reviewId, spotId))
+    }
+}
+
 
 export const editAReview = (reviewBody, reviewId, spotId) => async(dispatch) => {
     const res = await fetch(`/api/spots/${spotId}/reviews/${reviewId}`, {
@@ -168,6 +188,9 @@ const spotReducer = (state = initialState, action) => {
             return newState
         case EDIT_REVIEW:
             newState.reviews[action.review.id] = action.review
+            return newState
+        case REMOVE_REVIEW:
+            delete newState.reviews[action.data.reviewId]
             return newState
         default: return state
         }
