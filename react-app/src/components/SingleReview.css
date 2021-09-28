@@ -1,0 +1,23 @@
+.single-review-page-btns{
+    display: flex;
+    
+}
+
+.single-review-container{
+    
+    border: 1px solid silver;
+    border-radius: 5px;
+    background-color: rgb(231, 230, 230);
+    margin: 10px;
+    padding: 10px;
+}
+
+.review-content{
+    border: 5px solid red;
+    background-color: springgreen;
+    line-height: 24px;
+}
+
+.single-review-page-btns{
+    
+}

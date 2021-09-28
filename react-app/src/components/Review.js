@@ -1,23 +1,26 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteAReview } from '../store/spot';
 import AddReview from './AddReview';
 import EditReviewForm from './EditReviewForm';
+import { NavLink } from 'react-router-dom';
+import SingleReview from './SingleReview'
 
 const Review = () => {
-
+    const dispatch = useDispatch()
     const reviews = useSelector(state => state.spots?.reviews)
-    console.log('@@@@@@@@@@@@@',reviews)
-    // const userReviewer = useSelector(state => state.user.id)
-    // console.log('$$$$$$$$$', user)
+    const user = useSelector(state => state.session.user)
+    // const review = useSelector(state => state.spots?.reviews?.id)
+    // console.log('*&(*&(*&(*&(*&(*&(&',review)
 
-return (
-    <div>
+    
+    
+    return (
+        <div>
        
             {reviews && Object.values(reviews)?.map((review) => (
                 <div className="single-review-wrapper" key={review.id}> 
-                   <h4>{review.user.username}</h4>
-                   <p>{review.review}</p>
-                   <EditReviewForm oldReview={review} reviewId={review.id} />
+                   <SingleReview review={review}/>
                 </div>
             ))}
             <AddReview />

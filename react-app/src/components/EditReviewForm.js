@@ -2,21 +2,27 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { editAReview } from "../store/spot";
+import { deleteAReview } from "../store/spot";
+import './EditReviewForm.css'
 
-function EditReviewForm({ oldReview, reviewId }) {
+function EditReviewForm({ oldReview, reviewId , hideEdit}) {
     const { spotId } = useParams();
     const dispatch = useDispatch();
-
-    const [reviewBody, setReviewBody] = useState(oldReview.reviewBody)
+    const [showEdit, setShowEdit] = useState(false)
+    const [reviewBody, setReviewBody] = useState(oldReview.review)
 
     const submitEdit = async(e) => {
-        console.log('$$$$$$$$$$$$$$$$$', reviewBody, reviewId, spotId)
+        // console.log('$$$$$$$$$$$$$$$$$', reviewBody, reviewId, spotId)
         e.preventDefault();
         await dispatch(editAReview(reviewBody, reviewId, spotId))
+        setReviewBody('')
+        hideEdit(e)
      
     }
+    
 
     return(
+    <form>
         <div>
             <textarea value={reviewBody} onChange={(e) => setReviewBody(e.target.value)} />
             <div className="edit-buttons">
@@ -24,6 +30,7 @@ function EditReviewForm({ oldReview, reviewId }) {
                 <button id='edit-cancel-btn'>Cancel</button>
             </div>
         </div>
+    </form>
 
     )
 }

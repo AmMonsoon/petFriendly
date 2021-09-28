@@ -1,7 +1,7 @@
 // import { fetchSpot } from '../store/spot'
 import React,  { useEffect, useState }   from 'react';
 import { useSelector , useDispatch} from 'react-redux';
-import { useParams , useHistory} from 'react-router-dom';
+import { useParams , useHistory, NavLink} from 'react-router-dom';
 import { fetchSpot } from '../store/spot';
 import { destroySpot } from '../store/spot';
 // import { patchSpot } from '../store/spot';
@@ -57,7 +57,7 @@ const SingleSpot = () => {
         else{
         priceContent = (
         <>  
-    {/* <i className="fas fa-edit"></i> */}
+    
         {user.id === spot?.userId && <div  onClick={displayEdit}><p>{spot.price}</p><button>Edit</button></div>}
          </>
         )}
@@ -78,7 +78,7 @@ const SingleSpot = () => {
                    <div>{priceContent}</div>
                    <div>
                        <Review />
-                      
+                       
                    </div>
                     <div className="delete-spot">
                         {

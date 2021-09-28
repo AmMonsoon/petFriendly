@@ -97,14 +97,22 @@ def add_review(id):
 
 @spots_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['PATCH'])
 def edit_review(id, reviewId):
+    
     reviewToEdit = Review.query.get(reviewId)
     edittedReview = request.json['reviewBody']
-    reviewToEdit.reviewBody = edittedReview
+    reviewToEdit.review = edittedReview
     print('^^^^^^^^^^^^',reviewToEdit)
     print('<<<<<<<<<<<<<',reviewId)
-    print('>>>>>>>>>>>>',reviewToEdit.reviewBody)
+    # print('>>>>>>>>>>>>',reviewToEdit.reviewBody)
 
     db.session.add(reviewToEdit)
     db.session.commit()
    
     return reviewToEdit.review_to_dict_inc_user()
+
+@spots_routes.route('/<int:id>/reviews/<int:reviewId>', methods=['DELETE'])
+def delete_review(id, reviewId):
+    reviewToDelete = Review.query.get(reviewId)
+    db.session.delete(reviewToDelete)
+    db.session.commit()
+    return "YES, DELETED"
