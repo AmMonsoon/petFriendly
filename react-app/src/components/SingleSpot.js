@@ -86,14 +86,16 @@ const SingleSpot = () => {
                            
                         </div>
 
-                    </div>     
+                    </div>
+                    <div className='spots-info'>
                     <h3>{spot?.address}</h3>
-                    <h4>{spot?.name}</h4>
                     <p>{spot?.city}</p>
                     <p>{spot?.state}</p>
                     <p>{spot?.country}</p>
+                    <h4>{spot?.name}</h4>
                     {!showEdit && <p>{spot?.price} / night</p>}
                    <div>{priceContent}</div>
+                   </div>     
                    <div>
                        <Review />
                        
