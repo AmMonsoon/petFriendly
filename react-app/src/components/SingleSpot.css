@@ -10,6 +10,14 @@
    height: 100%;
    padding: 0 0 0 5px;
 } */
+.single-spot-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: thistle; */
+    width: 102%
+}
 
 .photo-display-container{
     object-fit: contain;
@@ -18,13 +26,19 @@
     grid-template-columns: repeat(2 ,1fr);
     grid-template-rows: 200px 200px ;
     row-gap: 10px;
-    
+    /* background-color: turquoise; */
     max-width: 100vw;
+    margin-left: 10px;
     grid-template-areas:  
     "big-photo photo" 
     "big-photo photo"  
    ;
     /* height: 30vh; */
+}
+.spots-info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 /* .photo-display-container img{
     border-radius: 5px;
