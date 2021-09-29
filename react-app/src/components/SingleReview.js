@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
+// import { NavLink } from 'react-router-dom';
 import EditReviewForm from './EditReviewForm';
 import DeleteModal from './DeleteModal';
 import './SingleReview.css'

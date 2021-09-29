@@ -47,6 +47,18 @@ def post_spot():
    
     return spot.to_dict_spot()
 
+@spots_routes.route('/<int:id>/images', methods=['POST'])
+def post_image(id):
+    data = request.json
+    image = Image(
+            spotId=id,
+            imageUrl= data['imageUrl']
+        )
+    db.session.add(image)
+    db.session.commit()
+    update_spot = Spot.query.get(id)
+    return update_spot.to_dict_spot()
+
 
 @spots_routes.route('/<int:id>', methods=['PATCH'])
 def update_spot(id):

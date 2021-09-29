@@ -6,6 +6,8 @@ import { signUp } from '../../store/session';
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -19,11 +21,20 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    }else{
+      setErrors(["Passwords do not match"])
     }
   };
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
+  };
+  const updateFirstName= (e) => {
+    setFirstName(e.target.value);
+  };
+
+  const updateLastName= (e) => {
+    setLastName(e.target.value);
   };
 
   const updateEmail = (e) => {
@@ -62,6 +73,24 @@ const SignUpForm = () => {
           name='username'
           onChange={updateUsername}
           value={username}
+        ></input>
+      </div>
+      <div>
+        <label>First Name</label>
+        <input
+          type='text'
+          name='firstname'
+          onChange={updateFirstName}
+          value={firstName}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type='text'
+          name='firstname'
+          onChange={updateLastName}
+          value={lastName}
         ></input>
       </div>
       <div>

@@ -1,14 +1,16 @@
 // import { fetchSpot } from '../store/spot'
 import React,  { useEffect, useState }   from 'react';
 import { useSelector , useDispatch} from 'react-redux';
-import { useParams , useHistory, NavLink} from 'react-router-dom';
+import { useParams , useHistory } from 'react-router-dom';
 import { fetchSpot } from '../store/spot';
 import { destroySpot } from '../store/spot';
 // import { patchSpot } from '../store/spot';
 import EditSpotForm from './EditSpotForm';
 import Review from './Review';
 import { getAllReviews } from '../store/spot';
-import EditReviewForm from './EditReviewForm';
+// import EditReviewForm from './EditReviewForm';
+import "./SingleSpot.css"
+
 const SingleSpot = () => {
     const {spotId} = useParams()
     const history = useHistory()
@@ -17,6 +19,10 @@ const SingleSpot = () => {
     const user = useSelector(state => state.session.user)
     const [showEdit, setShowEdit] = useState(false)
     
+    const spotImages = {...spot.image}
+     delete spotImages['0']
+    // const im = Object.values(spotImages)
+    // console.log('^&^&*^*^*', im)
     
 
 
@@ -58,7 +64,7 @@ const SingleSpot = () => {
         priceContent = (
         <>  
     
-        {user.id === spot?.userId && <div  onClick={displayEdit}><p>{spot.price}</p><button>Edit</button></div>}
+        {user.id === spot?.userId && <div  onClick={displayEdit}><button>Edit</button></div>}
          </>
         )}
     
@@ -66,15 +72,27 @@ const SingleSpot = () => {
 
         return(
             <div className='single-spot-container'>
-                <div key={spot?.id}>
+                <div className='single-spots-display' key={spot?.id}>
                     
-                  { spot.image && spot.image.map(image =>   <img src={image?.imageUrl} alt='' key={spot?.id}/> )}      
+                    <div className='photo-display-container'>
+                         <img className='big-photo' src={spot?.image?.[0].imageUrl} alt='' key={spot?.id}/> 
+                        <div className='photo-thumbnail-container'>
+                            {spotImages && Object.values(spotImages).map(image => 
+                                
+                                    <img className='photo' key={image?.id} src={`${image.imageUrl}`} alt=''/>
+                              
+                                
+                                )}
+                           
+                        </div>
+
+                    </div>     
                     <h3>{spot?.address}</h3>
                     <h4>{spot?.name}</h4>
                     <p>{spot?.city}</p>
                     <p>{spot?.state}</p>
                     <p>{spot?.country}</p>
-                    {/* <p>{spot?.price}</p> */}
+                    {!showEdit && <p>{spot?.price} / night</p>}
                    <div>{priceContent}</div>
                    <div>
                        <Review />

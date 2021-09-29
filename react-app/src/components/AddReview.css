@@ -1,0 +1,10 @@
+.add-review-textbox{
+    resize: none;
+    height: 100px;
+    width: 330px;
+    line-height: 24px;
+    border: 1px solid silver;
+    background-color: rgb(231, 230, 230);
+    border-radius: 5px;
+
+}

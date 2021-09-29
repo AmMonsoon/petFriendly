@@ -22,8 +22,18 @@ def password_matches(form, field):
     if not user.check_password(password):
         raise ValidationError('Password was incorrect.')
 
+def check_password_length(form,field):
+    password = field.data
+    if len(password) < 8:
+        raise ValidationError('Password must be at least 8 characters')
+    elif len(password) > 16:
+        raise ValidationError("Password cannot be more than 16 characters")
+
+
+
+
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), user_exists])
+    email = StringField('email', validators=[DataRequired(), user_exists, Email()])
     password = StringField('password', validators=[
-                           DataRequired(), password_matches])
+                           DataRequired(), password_matches, check_password_length])
