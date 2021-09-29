@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "bff2e39e622a2ffd07e0b620420d64f6aa0b75dfec5340ed18514523c400527b"
+            "sha256": "1e02627ffc285289f2cc4aaf4cb6bb65f5d25b68ae41c60b0940a8a9ee595f36"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -32,13 +32,29 @@
             "index": "pypi",
             "version": "==7.1.2"
         },
-        "faker": {
+        "dnspython": {
             "hashes": [
-                "sha256:0e41f73deb8233210b728c98b926284d3a7f51c001793e8b61f4382561971011",
-                "sha256:d4492b0f84d67e76a86ce1712ec7d38ecb92f91c0ca0ac0a9f2a0c3227ab9eb2"
+                "sha256:95d12f6ef0317118d2a1a6fc49aac65ffec7eb8087474158f42f26a639135216",
+                "sha256:e4a87f0b573201a0f3727fa18a516b055fd1107e0e5477cded4a2de497df1dd4"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==2.1.0"
+        },
+        "email-validator": {
+            "hashes": [
+                "sha256:5675c8ceb7106a37e40e2698a57c056756bf3f272cfa8682a4f87ebd95d8440b",
+                "sha256:aa237a65f6f4da067119b7df3f13e89c25c051327b2b5b66dc075f33d62480d7"
             ],
             "index": "pypi",
-            "version": "==8.13.2"
+            "version": "==1.1.3"
+        },
+        "faker": {
+            "hashes": [
+                "sha256:2649789e3e0c354dde1b8257d2ba7ed663fc3201e41277581de65c17e8aab10a",
+                "sha256:7b116034973a9a977a34a8a380354028150edf69f6cfbe55c03a852dd0a4116b"
+            ],
+            "index": "pypi",
+            "version": "==8.14.0"
         },
         "flask": {
             "hashes": [
@@ -150,6 +166,14 @@
             ],
             "index": "pypi",
             "version": "==20.1.0"
+        },
+        "idna": {
+            "hashes": [
+                "sha256:14475042e284991034cb48e06f6851428fb14c4dc953acd9be9a5e95c7b6dd7a",
+                "sha256:467fbad99067910785144ce333826c71fb0e63a425657295239737f7ecd125f3"
+            ],
+            "markers": "python_version >= '3.5'",
+            "version": "==3.2"
         },
         "itsdangerous": {
             "hashes": [

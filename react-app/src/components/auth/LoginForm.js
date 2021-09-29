@@ -17,6 +17,10 @@ const LoginForm = () => {
       setErrors(data);
     }
   };
+  const loginDemo = async (e) => {
+    e.preventDefault();
+    await dispatch(login('demo@aa.io', 'password'));
+  };
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -63,6 +67,8 @@ const LoginForm = () => {
         />
         <button type='submit'>Login</button>
       </div>
+      <button className="login-demo-btn" onClick={loginDemo}>Demo</button>
+
     </form>
     </div>
   </div>

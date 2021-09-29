@@ -127,6 +127,15 @@ export const patchSpot = (price, spotId) => async(dispatch) => {
         return spot
     }
 }
+export const addImage = (spotId , imageUrl) => async(dispatch)=>{
+    const res = await fetch(`/api/spots/${spotId}/images`, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify({imageUrl})
+    })
+    const newSpot = await res.json()
+    dispatch(getSpot(newSpot))
+}
 
 export const destroySpot = (spotId) => async(dispatch) => {
     await fetch(`/api/spots/${spotId}`,

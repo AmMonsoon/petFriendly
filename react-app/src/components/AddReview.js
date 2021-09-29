@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams, useHistory} from 'react-router-dom'
 import { addNewReview } from '../store/spot'
-
+import './AddReview.css'
 const AddReview = () => {
     const {spotId} = useParams()
     const dispatch = useDispatch()
@@ -29,7 +29,7 @@ const AddReview = () => {
         <section>
             <h3>Add Review Form</h3>
                 <form onSubmit={handleSubmit}>
-                    <input className='add-review-field' placeholder='Tell us about your stay!' type='text' required value={reviewBody} onChange={e => setReviewBody(e.target.value)}/>
+                    <textarea className='add-review-textbox' placeholder='Tell us about your stay!' type='text' required value={reviewBody} onChange={e => setReviewBody(e.target.value)}/>
                     <button className='add-review-submit' type='submit' disabled={!reviewBody.length}>Post</button>
                 </form>
         </section>
