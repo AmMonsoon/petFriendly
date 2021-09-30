@@ -40,6 +40,11 @@
     justify-content: space-between;
     flex-direction: column;
 }
+
+#edit-spot{
+color: blue;
+cursor: pointer;
+}
 /* .photo-display-container img{
     border-radius: 5px;
 } */

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { patchSpot } from '../store/spot';
 import { useParams } from 'react-router-dom';
 import { addImage } from '../store/spot';
+import './EditSpotForm.css'
+
 function EditSpotForm({ oldPrice, hideEdit }) {
     const {spotId} = useParams();
     const dispatch = useDispatch()
@@ -42,8 +44,8 @@ function EditSpotForm({ oldPrice, hideEdit }) {
             {numImages < 2 && <input placeholder="Image URL" type="text" required value={imageUrlFour} onChange={((e) => setImageUrlFour(e.target.value))} />}
 
             <div className="edit-price-btn">
-                <div className="edit-price-btn" onClick={(e) => submitEdit(e)}><i className="fas fa-sync-alt"></i></div>
-                <div className="edit-price-btn" onClick={hideEdit}><i className="far fa-times-circle"></i></div>
+                <div className="edit-price-btn" onClick={(e) => submitEdit(e)}><button>Edit</button></div>
+                <div className="edit-price-btn" onClick={hideEdit}><button>Cancel</button></div>
             </div>
 
         </div>

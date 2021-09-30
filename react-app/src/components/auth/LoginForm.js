@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
+import loginlogo from '../../images/loginlogo.png'
 
-const LoginForm = () => {
+const LoginForm = ({onClose}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
+
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
@@ -30,24 +32,26 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
-  if (user) {
-    return <Redirect to='/' />;
-  }
+  // if (user) {
+  //   return <Redirect to='/spots' />;
+  // }
 
   return (
     <div className="login-page-container">
     <div className="login-section-container">
-      <div className="logo__wapper">
-       
+      <div className="logo-wrapper">
+          <img className='login-logo' src={loginlogo} alt='' />
+          <h2>Log In</h2>
       </div>
+      
     <form onSubmit={onLogin}>
-      <div>
+      <div className='form-errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label htmlFor='email'>Email</label>
+        <label  htmlFor='email'>Email:</label>
         <input
           name='email'
           type='text'
@@ -57,7 +61,7 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>Password:</label>
         <input
           name='password'
           type='password'
@@ -65,10 +69,14 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+        
       </div>
-      <button className="login-demo-btn" onClick={loginDemo}>Demo</button>
 
+      <button type='submit' onClick={e => onLogin(e)}>Login</button>
+      <button className="login-demo-btn" onClick={loginDemo}>Demo</button>
+      <div className="login__signup">
+          Don't have an account? <NavLink className="login-page-signup-link" to="/sign-up">Sign Up</NavLink>
+        </div>
     </form>
     </div>
   </div>
