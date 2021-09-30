@@ -4,6 +4,8 @@ import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import loginlogo from '../../images/loginlogo.png'
 
+
+
 const LoginForm = ({onClose}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -32,9 +34,9 @@ const LoginForm = ({onClose}) => {
     setPassword(e.target.value);
   };
 
-  // if (user) {
-  //   return <Redirect to='/spots' />;
-  // }
+  if (user) {
+    return <Redirect to='/spots' />;
+  }
 
   return (
     <div className="login-page-container">
