@@ -1,19 +1,21 @@
 // import { fetchSpot } from '../store/spot'
 import React,  { useEffect, useState }   from 'react';
 import { useSelector , useDispatch} from 'react-redux';
-import { useParams , useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { fetchSpot } from '../store/spot';
-import { destroySpot } from '../store/spot';
+// import { destroySpot } from '../store/spot';
+
 // import { patchSpot } from '../store/spot';
 import EditSpotForm from './EditSpotForm';
 import Review from './Review';
 import { getAllReviews } from '../store/spot';
 // import EditReviewForm from './EditReviewForm';
+import DeleteSpotModal from './DeleteSpotModal';
 import "./SingleSpot.css"
 
 const SingleSpot = () => {
     const {spotId} = useParams()
-    const history = useHistory()
+    // const history = useHistory()
     const dispatch = useDispatch()
     const spot = useSelector(state => state.spots)
     const user = useSelector(state => state.session.user)
@@ -21,8 +23,7 @@ const SingleSpot = () => {
     
     const spotImages = {...spot.image}
      delete spotImages['0']
-    // const im = Object.values(spotImages)
-    // console.log('^&^&*^*^*', im)
+    
     
 
 
@@ -39,11 +40,11 @@ const SingleSpot = () => {
 
 
 
-    const deleteSpot = async(e) =>{
-        e.preventDefault()
-        await dispatch(destroySpot(spotId))
-        history.push('/spots')
-    }
+    // const deleteSpot = async(e) =>{
+    //     e.preventDefault()
+    //     await dispatch(destroySpot(spotId))
+    //     history.push('/spots')
+    // }
 
 
 
@@ -64,7 +65,7 @@ const SingleSpot = () => {
         priceContent = (
         <>  
     
-        {user.id === spot?.userId && <div  onClick={displayEdit}><button>Edit</button></div>}
+        {user.id === spot?.userId && <div  onClick={displayEdit}><i id='edit-spot' className='fas fa-pencil-alt fa-lg'> </i></div>}
          </>
         )}
     
@@ -101,9 +102,11 @@ const SingleSpot = () => {
                        
                    </div>
                     <div className="delete-spot">
-                        {
-                            user.id === spot?.userId &&  <button className="delete-spot-btn" onClick={e => deleteSpot(e)}>Delete Spot</button>
-                        }
+                    {user.id === spot?.userId && <DeleteSpotModal  spotId={spotId} />}
+
+                        {/* {
+                            user.id === spot?.userId &&  <button className="delete-spot-btn" onClick={e => deleteSpot(e)}>Remove Listing</button>
+                        } */}
                         
                         </div>                                  
                 </div>               

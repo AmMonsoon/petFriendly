@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import logo from '../images/petFriendly.png'
-const NavBar = () => {
+import LoginModal from './auth/LoginModal';
+const NavBar = ({email, password}) => {
   return (
     <div className="navbar-container">
       <div className="navbar-wrapper">
@@ -37,7 +38,9 @@ const NavBar = () => {
             </NavLink>
 
             
-
+          <div className='login-form-btn'>
+            <LoginModal email={email} password={password} />
+          </div>
           <div className="logout-button"><LogoutButton /></div>
         </div>
       </div>

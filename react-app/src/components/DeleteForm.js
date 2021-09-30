@@ -10,6 +10,7 @@ const DeleteForm = ({onClose, reviewId, spotId}) => {
         await dispatch(deleteAReview(reviewId, spotId))
     }
     
+    
     return(
     <div className='delete-confirm'>
         <div className='delete-modal-image'>
