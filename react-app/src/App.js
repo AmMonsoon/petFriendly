@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { useDispatch , useSelector} from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+// import LoginForm from './components/auth/LoginForm';
+// import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -11,7 +11,7 @@ import { authenticate } from './store/session';
 import Spot from './components/Spot';
 import CreateSpot from './components/NewSpot';
 import SingleSpot from './components/SingleSpot';
-
+import Home from './components/Home';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -50,7 +50,9 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <NavBar userId={currentUser?.id}/>
+          
+          <Home />
         </ProtectedRoute>
         <ProtectedRoute path='/spots' exact={true}>
           <NavBar userId={currentUser?.id}/>
