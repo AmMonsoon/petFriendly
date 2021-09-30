@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect, NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import loginlogo from '../../images/loginlogo.png'
-
+import './LoginFormModal.css'
 
 
 const LoginForm = ({onClose}) => {
@@ -37,6 +37,7 @@ const LoginForm = ({onClose}) => {
   if (user) {
     return <Redirect to='/spots' />;
   }
+
 
   return (
     <div className="login-page-container">

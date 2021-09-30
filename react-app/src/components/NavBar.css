@@ -48,7 +48,7 @@
 .navbar-buttons-wrapper {
     width: 278px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     margin-right: -1vw;
    
@@ -66,14 +66,28 @@
 }
 
 .navbar-buttons-wrapper i{
-    height: 5px;
-    width: 5px;
+    height: 7px;
+    width: 7px;
     padding: 3px;
+    margin-right: 5px;
 }
-
-.logout-button{
-    margin-top: 10px;
+/* .navbar-buttons-wrapper button{
+    background-color: royalblue;
     border-radius: 5px;
-    
+    margin-top: 22px;
+    padding: 7px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    color: black;
+    cursor: pointer;
+} */
+
+.logout-button-modal{
+    background-color: royalblue;
+    border-radius: 5px;
+    margin-top: 22px;
+    padding: 7px;
+    margin-right: 5px;
     color: #0a0c0a;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }

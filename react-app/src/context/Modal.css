@@ -46,10 +46,11 @@ align-items: center;
 border-radius: 20px;
 padding: 10% 35% 15%;
 margin-bottom: 10em; 
-height: 425px;
-width: 275px;
+height: 551px;
+width: 355px;
 background-color: rgb(240, 245, 244);
 box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+
 
 }
 .login-logo {
@@ -75,6 +76,7 @@ box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 padding: 30% 35% 15%; 
 margin: 10%;
 height: 250px;
+/* height: 608px; */
 width: 200px;
 background-color: rgb(240, 245, 244);
 box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;

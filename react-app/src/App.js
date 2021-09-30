@@ -34,9 +34,13 @@ function App() {
     <div className='page-container'>
       <Switch>
         <Route path='/login' exact={true}>
+        <NavBar userId={currentUser?.id}/>
+
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
+        <NavBar userId={currentUser?.id}/>
+
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
