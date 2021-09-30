@@ -6,7 +6,7 @@ import loginlogo from '../../images/loginlogo.png'
 import './LoginFormModal.css'
 
 
-const LoginForm = ({onClose}) => {
+const LoginForm = ({onClose, setRenderLogin}) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
 
@@ -14,6 +14,10 @@ const LoginForm = ({onClose}) => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  const clickHandler = e => {
+    e.preventDefault()
+    setRenderLogin(false)
+  }
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
@@ -78,7 +82,7 @@ const LoginForm = ({onClose}) => {
       <button type='submit' onClick={e => onLogin(e)}>Login</button>
       <button className="login-demo-btn" onClick={loginDemo}>Demo</button>
       <div className="login__signup">
-          Don't have an account? <NavLink className="login-page-signup-link" to="/sign-up">Sign Up</NavLink>
+          Don't have an account? <NavLink onClick={clickHandler} className="login-page-signup-link" to="">Sign Up</NavLink>
         </div>
     </form>
     </div>

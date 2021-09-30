@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect , NavLink} from 'react-router-dom';
 import { signUp } from '../../store/session';
+import loginlogo from '../../images/loginlogo.png'
 
-const SignUpForm = () => {
+const SignUpForm = ({setRenderLogin}) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -25,6 +26,10 @@ const SignUpForm = () => {
       setErrors(["Passwords do not match"])
     }
   };
+  const clickHandler = e => {
+    e.preventDefault()
+    setRenderLogin(true)
+  }
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -50,14 +55,15 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/spots' />;
   }
 
   return (
     <div className="login-page-container">
       <div className="login-section-container">
       <div className="logo__wrapper">
-
+      <img className='login-logo' src={loginlogo} alt='' />
+          <h2>Sign Up!</h2>
     
       </div>
     <form onSubmit={onSignUp}>
@@ -67,7 +73,7 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        <label>User Name:</label>
         <input
           type='text'
           name='username'
@@ -76,7 +82,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>First Name</label>
+        <label>First Name:</label>
         <input
           type='text'
           name='firstname'
@@ -85,7 +91,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Last Name</label>
+        <label>Last Name:</label>
         <input
           type='text'
           name='firstname'
@@ -94,7 +100,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        <label>Email:</label>
         <input
           type='text'
           name='email'
@@ -103,7 +109,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        <label>Password:</label>
         <input
           type='password'
           name='password'
@@ -112,7 +118,7 @@ const SignUpForm = () => {
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        <label>Repeat Password:</label>
         <input
           type='password'
           name='repeat_password'
@@ -124,7 +130,7 @@ const SignUpForm = () => {
       <button className='sign-up-button' type='submit'>Sign Up</button>
     </form>
     <div className="signup__login">
-          Already have an account? <NavLink className="login-page-signup-link" to="/login">Log In</NavLink>
+          Already have an account? <NavLink onClick={clickHandler} className="login-page-signup-link" to="">Log In</NavLink>
         </div>
     </div>
   </div>

@@ -7,3 +7,8 @@
     /* background-color: blueviolet; */
     width: 80vw;
 }
+
+* {
+    box-sizing: border-box;
+    
+}

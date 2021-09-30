@@ -18,7 +18,7 @@ const LogoutButton = () => {
   }
 
   return(
-  <button className="logout-button-modal" onClick={onLogout} style={buttonStyle}>
+  <button id='logout' onClick={onLogout} style={buttonStyle}>
 
   Logout
 

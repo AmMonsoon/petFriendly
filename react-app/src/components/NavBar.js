@@ -5,11 +5,13 @@ import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import logo from '../images/petFriendly.png'
 import LoginModal from './auth/LoginModal';
+import SignUpModal from './auth/SignUpModal';
 import { useSelector } from 'react-redux';
 
 
-const NavBar = ({email, password}) => {
+const NavBar = ({email, password, firstName, lastName, username}) => {
   const user = useSelector(state => state.session.user)
+
   return (
     <div className="navbar-container">
       <div className="navbar-wrapper">
@@ -43,9 +45,12 @@ const NavBar = ({email, password}) => {
 
             
           <div className='login-form-btn'>
-           {!user &&  <LoginModal email={email} password={password} /> }
+           {!user &&  <LoginModal login={true} email={email} password={password} /> }
           </div>
-          <div className="logout-button"><LogoutButton /></div>
+          <div className='sign-up-form-btn'>
+            {!user &&    <LoginModal login={false} username={username} firstName={firstName} lastName={lastName} email={email} password={password} />}
+          </div>
+          <div  className="logout-button"><LogoutButton /></div>
         </div>
       </div>
      </div>
