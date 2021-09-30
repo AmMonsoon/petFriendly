@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import '../NavBar.css'
 
 const LogoutButton = () => {
   const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const LogoutButton = () => {
   }
 
   return(
-  <button className="logout-button" onClick={onLogout} style={buttonStyle}>
+  <button id='logout' onClick={onLogout} style={buttonStyle}>
 
   Logout
 

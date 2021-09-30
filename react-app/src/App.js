@@ -33,12 +33,16 @@ function App() {
       {/* <NavBar /> */}
     <div className='page-container'>
       <Switch>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
+        <NavBar userId={currentUser?.id}/>
+
           <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
+        </Route> */}
+        {/* <Route path='/sign-up' exact={true}>
+        <NavBar userId={currentUser?.id}/>
           <SignUpForm />
-        </Route>
+
+        </Route> */}
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>

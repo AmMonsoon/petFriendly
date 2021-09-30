@@ -164,7 +164,8 @@ const spotReducer = (state = initialState, action) => {
         case GET_SPOT:   
             newState = action.spot
             return newState
-        case ALL_SPOTS:           
+        case ALL_SPOTS: 
+            newState = {}          
             action.spots.forEach(spot => {
                 newState[spot.id] = spot
             })

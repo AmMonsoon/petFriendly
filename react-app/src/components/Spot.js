@@ -32,7 +32,7 @@ const handleClick = (e) =>{
             {spots && spots?.map(spot =>               
                     <div className='spots-div' key={spot?.id}  >
                         {/* <h4>{spot.name}</h4> */}
-                        <img src={spot?.image?.[0]?.imageUrl} onClick={handleClick} id={spot.id} alt=''  />        
+                      {spot?.image?.length && <img src={spot?.image[0]?.imageUrl} onClick={handleClick} id={spot.id} alt=''  /> }         
                         {/* <h3>{spot.address}</h3> */}
                         
                         <p id='spot-location'>{spot.city}, {spot.state}</p>
