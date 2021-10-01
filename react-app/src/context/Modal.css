@@ -73,14 +73,26 @@ box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 
 .delete-confirm{
-padding: 30% 35% 15%; 
+/* padding: 10% 35% 15%; 
 margin: 10%;
-height: 250px;
-/* height: 608px; */
+
+height: fit-content;
 width: 200px;
 background-color: rgb(240, 245, 244);
 box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
-border-radius: 5px;
+border-radius: 5px; */
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border-radius: 20px;
+padding: 10% 10% 15%;
+margin-bottom: 10em; 
+height: fit-content;
+width: 355px;
+background-color: rgb(240, 245, 244);
+box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
 }
 .delete-confirm h2{
   margin-left: 20px;
@@ -108,7 +120,7 @@ border-radius: 5px;
 .delete-modal-image img{
   object-fit: cover;
   margin-left: 20px;
-  height: 150px;
-  width: 150px;
-  border-radius: 75px;
+  height: 155px;
+    width: 220px;
+    border-radius: 54px;
 }

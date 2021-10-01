@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { destroySpot } from "../store/spot";
 // import bird from "../images/dorito.png"
 import { useHistory } from "react-router";
+import toonDog from '../images/toondog.png'
 
 const DeleteSpotForm = ({onClose, spotId}) => {
     const dispatch = useDispatch()
@@ -23,7 +24,7 @@ const DeleteSpotForm = ({onClose, spotId}) => {
     return(
     <div className='delete-confirm'>
         <div className='delete-modal-image'>
-            {/* <img  src={bird} alt=''/> */}
+            <img  src={toonDog} alt=''/>
         </div>
         <h2>Are you sure?</h2>
         <div className='delete-modal-btn-container'>

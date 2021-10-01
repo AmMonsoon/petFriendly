@@ -1,3 +1,46 @@
+.home-page-header{
+   display: flex;
+   justify-content: center;
+   width: 100%;
+   
+   position: absolute;
+   top: 20%;
+   left: 0;
+   text-shadow:
+    -1px -1px 0 white,
+     0   -1px 0 white,
+     1px -1px 0 white,
+     1px  0   0 white,
+     1px  1px 0 white,
+     0    1px 0 white,
+    -1px  1px 0 white,
+    -1px  0   0 white;
+   color: black;
+
+}
+.home-page-desc{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-shadow:
+    -1px -1px 0 #000,
+     0   -1px 0 #000,
+     2px -1px 0 #000,
+     2px  0   0 #000,
+     2px  2px 0 #000,
+     0    2px 0 #000,
+    -1px  2px 0 #000,
+    -1px  0   0 #000;
+    position: absolute;
+    top: 31%;
+    left: 0;
+    color: white;
+   
+}
+.home-page-desc span{
+    font-size: 21px;
+}
+
 .home-page-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -5,6 +48,7 @@
     grid-gap: 5px;
     margin-top: 5px;
     grid-auto-flow: dense;
+    max-width: 80vw;
   }
   .home-page-container img {
     object-fit: cover;
@@ -17,8 +61,33 @@
 }
 .vertical {
     grid-row: span 2;
+    grid-column: span 2;
 }
 .big{
     grid-column: span 2;
     grid-row: span 2;
+}
+.spot-link{
+    color: blue;
+}
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #3ab122;;
+    color: white;
+    margin-top: 5px;
+    padding: .3px;
+    text-shadow:
+    -1px -1px 0 #000,
+     0   -1px 0 #000,
+     1px -1px 0 #000,
+     1px  0   0 #000,
+     1px  1px 0 #000,
+     0    1px 0 #000,
+    -1px  1px 0 #000,
+    -1px  0   0 #000;
+}
+
+.linked-in, .github {
+    padding-top: 5px;
 }

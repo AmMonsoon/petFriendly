@@ -16,7 +16,7 @@ const NavBar = ({email, password, firstName, lastName, username}) => {
     <div className="navbar-container">
       <div className="navbar-wrapper">
         <div className="navbar-logo-wrapper">
-          <NavLink to='/spots' exact={true} activeClassName='active'>
+          <NavLink to='/' exact={true} activeClassName='active'>
             <img className="navbar-logo-image" src={logo} alt=""/>
           </NavLink>
         </div>
