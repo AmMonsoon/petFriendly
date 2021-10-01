@@ -5,7 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import logo from '../images/petFriendly.png'
 import LoginModal from './auth/LoginModal';
-import SignUpModal from './auth/SignUpModal';
+// import SignUpModal from './auth/SignUpModal';
 import { useSelector } from 'react-redux';
 
 
