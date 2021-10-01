@@ -45,12 +45,12 @@ const LoginForm = ({onClose, setRenderLogin}) => {
 
   return (
     <div className="login-page-container">
-    <div className="login-section-container">
       <div className="logo-wrapper">
           <img className='login-logo' src={loginlogo} alt='' />
           <h2>Log In</h2>
       </div>
       
+    <div className="login-section-container">
     <form onSubmit={onLogin}>
       <div className='form-errors'>
         {errors.map((error, ind) => (
@@ -78,14 +78,15 @@ const LoginForm = ({onClose, setRenderLogin}) => {
         />
         
       </div>
-
-      <button type='submit' onClick={e => onLogin(e)}>Login</button>
-      <button className="login-demo-btn" onClick={loginDemo}>Demo</button>
-      <div className="login__signup">
-          Don't have an account? <NavLink onClick={clickHandler} className="login-page-signup-link" to="">Sign Up</NavLink>
-        </div>
     </form>
     </div>
+        <div className='modal-btns'> 
+          <button type='submit' onClick={e => onLogin(e)}>Login</button>
+          <button className="login-demo-btn" onClick={loginDemo}>Demo</button>
+        </div>
+      <div className="login__signup">
+          Don't have an account? <NavLink onClick={clickHandler} className="login-page-signup-link" to="">Sign Up</NavLink>
+      </div>
   </div>
   );
 };

@@ -18,7 +18,9 @@
     /* background-color: thistle; */
     width: 102%
 }
-
+.edit-spot-div{
+    padding: 15px;
+}
 .photo-display-container{
     object-fit: contain;
     display: grid;
