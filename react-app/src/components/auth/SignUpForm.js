@@ -17,15 +17,27 @@ const SignUpForm = ({setRenderLogin}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    let error;
       const data = await dispatch(signUp(username,firstName, lastName, email, password));
       if (data) {
         setErrors(data)
       }
-    }else{
-      setErrors(["Passwords do not match"])
+    // }else{
+    //   setErrors(["Passwords do not match"])
+    // }
+  
+    if(password !== repeatPassword){
+      if(data){
+       error = [...data]
+       error.push(["Passwords do not match"])
+      }else{
+        error = ["Passwords do not match"]
+      }
+      setErrors(error)
     }
-  };
+
+
+  }
   const clickHandler = e => {
     e.preventDefault()
     setRenderLogin(true)
@@ -60,14 +72,14 @@ const SignUpForm = ({setRenderLogin}) => {
 
   return (
     <div className="login-page-container">
-      <div className="login-section-container">
-      <div className="logo__wrapper">
+      <div className="logo-wrapper">
       <img className='login-logo' src={loginlogo} alt='' />
           <h2>Sign Up!</h2>
     
       </div>
+    <div className="login-section-container">
     <form onSubmit={onSignUp}>
-      <div>
+      <div className='form-errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
@@ -127,12 +139,12 @@ const SignUpForm = ({setRenderLogin}) => {
           required={true}
         ></input>
       </div>
-      <button className='sign-up-button' type='submit'>Sign Up</button>
     </form>
+    </div>
+      <button className='sign-up-button' type='submit' onClick={e => onSignUp(e)}>Sign Up</button>
     <div className="signup__login">
           Already have an account? <NavLink onClick={clickHandler} className="login-page-signup-link" to="">Log In</NavLink>
         </div>
-    </div>
   </div>
 
   );

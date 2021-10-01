@@ -82,7 +82,7 @@
 } */
 
 .logout-button > button#logout {
-    background: royalblue !important;
+    background:  rgb(0, 204, 255) !important;
     border-radius: 5px;
     margin-top: 22px;
     padding: 7px;

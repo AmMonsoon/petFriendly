@@ -95,7 +95,7 @@ const SingleSpot = () => {
                     <p>{spot?.country}</p>
                     <h4>{spot?.name}</h4>
                     {!showEdit && <p>{spot?.price} / night</p>}
-                   <div>{priceContent}</div>
+                   <div className='edit-spot-div'>{priceContent}</div>
                    </div>     
                    <div>
                        <Review />

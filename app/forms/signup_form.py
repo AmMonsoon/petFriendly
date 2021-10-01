@@ -18,16 +18,19 @@ def username_exists(form, field):
     user = User.query.filter(User.username == username).first()
     if user:
         raise ValidationError('Username is already in use.')
+def check_first_name_length(form,field):
+    firstName = field.data
+    if len(firstName) < 8:
+        raise ValidationError('First name must be at least 8 characters')
+    elif len(firstName) > 16:
+        raise ValidationError("First name cannot be more than 16 characters")
 
-# def password_matches(form, field):
-#     # Checking if password matches
-#     password = field.data
-#     email = form.data['email']
-#     user = User.query.filter(User.email == email).first()
-#     if not user:
-#         raise ValidationError('No such user exists.')
-#     if not user.check_password(password):
-#         raise ValidationError('Password was incorrect.')
+def check_last_name_length(form,field):
+    lastName = field.data
+    if len(lastName) < 8:
+        raise ValidationError('Last name must be at least 8 characters')
+    elif len(lastName) > 16:
+        raise ValidationError("Last name cannot be more than 16 characters")
 
 def check_password_length(form,field):
     password = field.data
@@ -41,8 +44,8 @@ class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
     firstName = StringField(
-        'firstName', validators=[DataRequired()])
+        'firstName', validators=[DataRequired(), check_first_name_length])
     lastName = StringField(
-        'lastName', validators=[DataRequired()])
+        'lastName', validators=[DataRequired(), check_last_name_length])
     email = StringField('email', validators=[DataRequired(), user_exists, Email('Please provide a valid email')])
     password = StringField('password', validators=[DataRequired(), check_password_length ])

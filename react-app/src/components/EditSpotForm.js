@@ -14,7 +14,23 @@ function EditSpotForm({ oldPrice, hideEdit }) {
     const [imageUrlThree, setImageUrlThree] = useState('')
     const [imageUrlFour, setImageUrlFour] = useState('')
     const numImages = useSelector(state => state.spots.image.length )
-    console.log('$^$^$^&$^&$^&$&^$&^$',numImages)
+    
+
+// const checkImage = async(url) => {
+//     return new Promise((resolve, reject) => {
+//         const image = new Image();
+//         image.onload = function() {
+//           if (this.width > 0) {
+//             resolve(true)
+//         }
+//     }
+//     image.onerror = function () {
+//         resolve(false)
+//     }
+//     image.src = url;
+//     })  
+// }
+
     const submitEdit = async (e) => {
         e.preventDefault()
         await dispatch(patchSpot(price, spotId))
@@ -35,18 +51,20 @@ function EditSpotForm({ oldPrice, hideEdit }) {
     }
 
     return (
-        <div>
-            
+        <div className='edit-form-container'>
+            <form className='edit-spot-form'>
+
             <input  type='number' min="0.00" max='"1000.00"' step='any' value={price} onChange={(e) => setPrice(e.target.value)}/>
             {numImages < 5 && <input placeholder="Image URL" type="text" required value={imageUrlOne} onChange={((e) => setImageUrlOne(e.target.value))} />}
             {numImages < 4 && <input placeholder="Image URL" type="text" required value={imageUrlTwo} onChange={((e) => setImageUrlTwo(e.target.value))} />}
             {numImages < 3 && <input placeholder="Image URL" type="text" required value={imageUrlThree} onChange={((e) => setImageUrlThree(e.target.value))} />}
             {numImages < 2 && <input placeholder="Image URL" type="text" required value={imageUrlFour} onChange={((e) => setImageUrlFour(e.target.value))} />}
 
-            <div className="edit-price-btn">
-                <div className="edit-price-btn" onClick={(e) => submitEdit(e)}><button>Edit</button></div>
-                <div className="edit-price-btn" onClick={hideEdit}><button>Cancel</button></div>
+            <div className="edit-btn">
+                <div className="edit-submit-btn" onClick={(e) => submitEdit(e)}><button>Edit</button></div>
+                <div className="edit-cancel-btn" onClick={hideEdit}><button>Cancel</button></div>
             </div>
+            </form>
 
         </div>
 
