@@ -44,9 +44,13 @@ function App() {
 
         </Route> */}
         <ProtectedRoute path='/users' exact={true} >
+        <NavBar userId={currentUser?.id}/>
+
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
+        <NavBar userId={currentUser?.id}/>
+
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >

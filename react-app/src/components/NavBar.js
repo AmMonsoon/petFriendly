@@ -5,7 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import logo from '../images/petFriendly.png'
 import LoginModal from './auth/LoginModal';
-import SignUpModal from './auth/SignUpModal';
+// import SignUpModal from './auth/SignUpModal';
 import { useSelector } from 'react-redux';
 
 
@@ -16,7 +16,7 @@ const NavBar = ({email, password, firstName, lastName, username}) => {
     <div className="navbar-container">
       <div className="navbar-wrapper">
         <div className="navbar-logo-wrapper">
-          <NavLink to='/spots' exact={true} activeClassName='active'>
+          <NavLink to='/' exact={true} activeClassName='active'>
             <img className="navbar-logo-image" src={logo} alt=""/>
           </NavLink>
         </div>
