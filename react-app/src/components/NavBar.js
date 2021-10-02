@@ -50,7 +50,7 @@ const NavBar = ({email, password, firstName, lastName, username}) => {
           <div className='sign-up-form-btn'>
             {!user &&    <LoginModal login={false} username={username} firstName={firstName} lastName={lastName} email={email} password={password} />}
           </div>
-          <div  className="logout-button"><LogoutButton /></div>
+        {user &&  <div  className="logout-button"><LogoutButton /></div>}
         </div>
       </div>
      </div>
