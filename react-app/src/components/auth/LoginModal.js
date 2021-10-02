@@ -10,7 +10,7 @@ const LoginModal = ({username, firstName, lastName,email, password, protect=fals
     const closeHandle = e => {
         setShowModal(false)
         if(protect){
-            history.goBack()
+            history.push('/')
         }
     }
 

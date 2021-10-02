@@ -12,27 +12,39 @@ The PetFriendly live link can be found here: <a href='https://petfriendlyy.herok
 * <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS3-1572B6?logo=CSS3" /></a>
 * <a href="https://flask.palletsprojects.com/en/2.0.x/"><img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" /></a>
 ## Features 
+### Splash Page
+![Splash Page](react-app/src/images/splashpage.jpg)
 
 ### Sign-up
-![Sign Up]
+![Sign Up](react-app/src/images/signup.jpg)
 
 ### Login
-![Login]
-
-### User Profile
-![Profile]
+![Login](react-app/src/images/login.jpg)
 
 ### Spots
-![Spots]
+![Spots](react-app/src/images/spots.jpg)
 
 ### Post a Spot
-![Post]
+![Post Spot](react-app/src/images/addspot.jpg)
+
+### Edit a Spot
+![Edit Spot](react-app/src/images/editspot.jpg)
+
+### Delete a Spot
+![Delete Spot](react-app/src/images/deletespot.jpg)
 
 ### Reviews
-![Reviews]
+![Reviews](react-app/src/images/reviews.jpg)
 
 ### Post a Review
-![PostReview]
+![PostReview](react-app/src/images/postreview.jpg)
+
+### Edit a Review
+![Edit Review](react-app/src/images/editreview.jpg)
+
+### Delete a Review
+![Delete Review](react-app/src/images/deletereview.jpg)
+
 
 ## Installation
 To build/run project locally, please follow these steps:

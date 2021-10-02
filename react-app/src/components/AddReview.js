@@ -27,7 +27,7 @@ const AddReview = () => {
     }   
     return(
         <section>
-            <h3>Add Review Form</h3>
+            <h3>Post a Review </h3>
                 <form onSubmit={handleSubmit}>
                     <textarea className='add-review-textbox' placeholder='Tell us about your stay!' type='text' required value={reviewBody} onChange={e => setReviewBody(e.target.value)}/>
                     <button className='add-review-submit' type='submit' disabled={!reviewBody.length}>Post</button>
