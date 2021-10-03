@@ -37,6 +37,8 @@ const AddReview = () => {
     }   
     return(
         <section>
+            <div className='post-review-display'>
+               
             <h3>Post a Review </h3>
                 <form onSubmit={handleSubmit}>
                 <div className='form-errors'>
@@ -45,8 +47,9 @@ const AddReview = () => {
         ))}
                 </div>  
                     <textarea className='add-review-textbox' pattern=".*\S+.*" placeholder='Tell us about your stay!' type='text' required value={reviewBody} onChange={e => setReviewBody(e.target.value)}/>
-                    <button className='add-review-submit' type='submit' disabled={!reviewBody.trim().length}>Post</button>
                 </form>
+                </div>
+                    <button className='add-review-submit' type='submit' disabled={!reviewBody.trim().length}>Post</button>
         </section>
 
     )

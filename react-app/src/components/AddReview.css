@@ -8,3 +8,16 @@
     border-radius: 5px;
 
 }
+.post-review-display{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.add-review-submit{
+    background-color: rgb(0, 204, 255);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+
+}

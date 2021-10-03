@@ -20,14 +20,14 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 def check_first_name_length(form,field):
     firstName = field.data
-    if len(firstName) < 8:
-        raise ValidationError('First name must be at least 8 characters')
+    if len(firstName) < 3:
+        raise ValidationError('First name must be at least 4 characters')
     elif len(firstName) > 16:
         raise ValidationError("First name cannot be more than 16 characters")
 
 def check_last_name_length(form,field):
     lastName = field.data
-    if len(lastName) < 8:
+    if len(lastName) < 3:
         raise ValidationError('Last name must be at least 8 characters')
     elif len(lastName) > 16:
         raise ValidationError("Last name cannot be more than 16 characters")
