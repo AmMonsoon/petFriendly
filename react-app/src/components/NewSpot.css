@@ -70,8 +70,11 @@ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30p
 .add-spot-submit{
     background-color: #3ab122;
     border-radius: 5px;
+    cursor: pointer;
 }
 .cancel-add{
     background-color: crimson;
     border-radius: 5px;
+    cursor: pointer;
+
 }

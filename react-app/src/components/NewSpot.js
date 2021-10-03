@@ -41,12 +41,17 @@ const handleSubmit = async(e) => {
         const errors = [];
         let checkedImage = await checkImage(imageUrl)
         if(!checkedImage) errors.push("Please include a valid image URL")
+        if(!name.trim().length) errors.push("Please fill enter a name")
+        if(!city.trim().length) errors.push("Please enter a city")
+        if(!state.trim().length) errors.push("Please enter a state")
+        if(!country.trim().length) errors.push("Please enter a country")
+        if(!price.trim().length) errors.push("Please include a price")
+        
         if (errors.length){
             setValidationErrors(errors)
         } else {
             const spot = {
                 userId: sessionUser.id,
-                // spotId,
                 address,
                 city,
                 state,
@@ -68,11 +73,6 @@ const handleSubmit = async(e) => {
     } 
    return(
        <section className='add-spot-section'>
-            <div className='form-errors'>
-            {validationErrors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-            ))}
-            </div>
             <div className='form-container'>
             <div className='image-container'>
                 <img src={coolCat} alt=''/>
@@ -81,15 +81,20 @@ const handleSubmit = async(e) => {
                 <h2>Add a Spot</h2>
             </div>
                 
+            <div className='form-errors'>
+            {validationErrors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+            ))}
+            </div>
            <form className='new-spot-form'
                  onSubmit={handleSubmit}>
-                <input placeholder='name' type='text' required value={name} onChange={ e => setName(e.target.value)}/>
-                <input placeholder='address' type='text' required value={address} onChange={ e => setAddress(e.target.value)}/>
-                <input placeholder='city' type='text' required value={city} onChange={ e => setCity(e.target.value)}/>
-                <input placeholder='state' type='text' required value={state} onChange={ e => setState(e.target.value)}/>
-                <input placeholder='country' type='text' required value={country} onChange={ e => setCountry(e.target.value)}/>
-                <input placeholder='price' type='text' required value={price} onChange={ e => setPrice(e.target.value)}/>
-                <input placeholder="Image URL" type="text" required value={imageUrl} onChange={((e) => setImageUrl(e.target.value))} />
+                <input placeholder='name'  type='text' required={true} value={name} onChange={ e => setName(e.target.value)}/>
+                <input placeholder='address'  type='text' required value={address} onChange={ e => setAddress(e.target.value)}/>
+                <input placeholder='city'  type='text' required value={city} onChange={ e => setCity(e.target.value)}/>
+                <input placeholder='state'  type='text' required value={state} onChange={ e => setState(e.target.value)}/>
+                <input placeholder='country'  type='text' required value={country} onChange={ e => setCountry(e.target.value)}/>
+                <input placeholder='price'  type='text' required value={price} onChange={ e => setPrice(e.target.value)}/>
+                <input placeholder="Image URL"  type="text" required value={imageUrl} onChange={((e) => setImageUrl(e.target.value))} />
                 <div className='new-spot-btns'> 
                 <button className='add-spot-submit' type="submit">Submit</button>
                 <button className='cancel-add' type='click' onClick={handleCancel}>Cancel</button>

@@ -8,29 +8,44 @@ const AddReview = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [reviewBody, setReviewBody] = useState('')
+    const [validationErrors, setValidationErrors] = useState([])
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const review = {
-            review: reviewBody
+        const errors = [];
+        if (!reviewBody.trim().length){
+          errors.push('Please fill out this area')
+        if(errors.length){
+            setValidationErrors(errors)
         }
+        }else{
 
-        if (reviewBody.length < 256) {
-            setReviewBody('')
-            let createdReview = await dispatch(addNewReview(review, spotId))
-            if(createdReview) {
-                history.push(`/spots/${spotId}`)
+            const review = {
+                review: reviewBody
             }
-        } else {
-            alert("Please limit your review to 255 Characters")
+    
+            if (reviewBody.length < 256) {
+                setReviewBody('')
+                let createdReview = await dispatch(addNewReview(review, spotId))
+                if(createdReview) {
+                    history.push(`/spots/${spotId}`)
+                }
+            } else {
+                alert("Please limit your review to 255 Characters")
+            }
         }
     }   
     return(
         <section>
             <h3>Post a Review </h3>
                 <form onSubmit={handleSubmit}>
-                    <textarea className='add-review-textbox' placeholder='Tell us about your stay!' type='text' required value={reviewBody} onChange={e => setReviewBody(e.target.value)}/>
-                    <button className='add-review-submit' type='submit' disabled={!reviewBody.length}>Post</button>
+                <div className='form-errors'>
+                {validationErrors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+        ))}
+                </div>  
+                    <textarea className='add-review-textbox' pattern=".*\S+.*" placeholder='Tell us about your stay!' type='text' required value={reviewBody} onChange={e => setReviewBody(e.target.value)}/>
+                    <button className='add-review-submit' type='submit' disabled={!reviewBody.trim().length}>Post</button>
                 </form>
         </section>
 
