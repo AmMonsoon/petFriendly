@@ -15,9 +15,23 @@
 
 
 .add-review-submit{
+    background-color: rgb(255, 0, 21);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    max-width: 52px;
+}
+
+
+.add-review-submit:enabled{
     background-color: rgb(0, 204, 255);
     border-radius: 5px;
     padding: 10px;
     color: white;
-
+    cursor: pointer;
+}
+.form{
+    display: flex;
+    flex-direction: column;
 }
