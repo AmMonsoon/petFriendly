@@ -36,12 +36,12 @@ const NavBar = ({email, password, firstName, lastName, username}) => {
               </div>
             </NavLink>
 
-            <NavLink to={`/users`} exact={true} activeClassName='active'>
+            {/* <NavLink to={`/users`} exact={true} activeClassName='active'>
               <div className="navbar-buttons-wrapper-button">
                 <i className="far fa-user fa-2x"></i>
                 
               </div>
-            </NavLink>
+            </NavLink> */}
 
             
           <div className='login-form-btn'>
