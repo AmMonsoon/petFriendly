@@ -27,8 +27,23 @@
     line-height: 24px;
     font-size: 16px;
 }
+.edit-buttons button{
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
 
 .edit-buttons{
     display: flex;
     justify-content: center;
+}
+
+#edit-submit-btn {
+    background-color: #3ab122;
+    border-radius: 5px;
+    margin-right: 16px;
+}
+#edit-cancel-btn {
+    background-color: crimson;
+    border-radius: 5px;
 }
