@@ -79,7 +79,7 @@ You can sign up and express thoughts/interests on<br /> locations with a review.
             
         </div>
         <div className='footer'>
-        <a href='https://www.linkedin.com/in/alex-monson-144151222/'>
+        <a href='https://www.linkedin.com/in/alex-monson-144151222/' target="_blank" rel="noopener noreferrer">
 
             <div className='linked-in'>
             <i className="fab fa-linkedin-in fa-2x"></i>
@@ -92,7 +92,7 @@ You can sign up and express thoughts/interests on<br /> locations with a review.
                     </p>
                     </pre>
             </div>
-            <a href='https://github.com/AmMonsoon'>
+            <a href='https://github.com/AmMonsoon' target="_blank" rel="noopener noreferrer">
             <div className='github'>
             <i className="fab fa-github fa-2x"></i>
             </div>
