@@ -46,7 +46,7 @@ const handleSubmit = async(e) => {
         if(!state.trim().length) errors.push("Please enter a state")
         if(!country.trim().length) errors.push("Please enter a country")
         if(!price.trim().length) errors.push("Please include a price")
-        
+    
         if (errors.length){
             setValidationErrors(errors)
         } else {

@@ -70,7 +70,6 @@ const SingleSpot = () => {
         )}
     
 
-
         return(
             <div className='single-spot-container'>
                 <div className='single-spots-display' key={spot?.id}>
