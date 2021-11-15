@@ -102,7 +102,6 @@ export const fetchAllSpots = () => async (dispatch) => {
     dispatch(getAllSpots(spots))
     return spots
     }
-    return
 }
 
 export const fetchSpot = (spotId) => async (dispatch) => {
