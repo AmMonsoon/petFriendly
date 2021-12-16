@@ -35,7 +35,12 @@ const NavBar = ({email, password, firstName, lastName, username}) => {
                
               </div>
             </NavLink>
-
+          <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
+              <div className="navbar-buttons-wrapper-button">
+                <i className="far fa-user fa-2x"></i>
+                
+              </div>
+            </NavLink>
             
           <div className='login-form-btn'>
            {!user &&  <LoginModal login={true} email={email} password={password} /> }

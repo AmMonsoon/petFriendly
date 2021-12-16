@@ -1,6 +1,6 @@
 import re
 from flask import Blueprint, request
-from app.models import Spot, db, Image, Review, User
+from app.models import Spot, db, Image, Review, Booking
 from sqlalchemy import orm
 from flask_login import current_user
 from datetime import datetime
@@ -79,15 +79,11 @@ def delete_spot(id):
     db.session.commit()
     return "spot deleted"
 
-
+#  REVIEW ROUTES
 @spots_routes.route('/<int:id>/reviews')
 def get_reviews(id):
     reviews = Review.query.filter(Review.spotId == id).all()
-    # reviewPayload = {}
-    # for review in reviews:
-    #     reviewUser = User.query.filter(User.id == review.userId).first()
-    #     review.user = reviewUser.to_dict()
-    #     reviewPayload[review.id] = review.review_to_dict_inc_user()
+    
     return {'reviews': [review.review_to_dict_inc_user() for review in reviews]}
 
 
@@ -126,5 +122,50 @@ def edit_review(id, reviewId):
 def delete_review(id, reviewId):
     reviewToDelete = Review.query.get(reviewId)
     db.session.delete(reviewToDelete)
+    db.session.commit()
+    return "YES, DELETED"
+# BOOKING ROUTES
+
+@spots_routes.route('/<int:id>/bookings')
+def get_bookings(id):
+    bookings = Booking.query.filter(Booking.spotId == id).all()
+    return {'bookings': [booking.booking_to_dict_inc_user() for booking in bookings]}
+
+@spots_routes.route('/<int:id>/bookings/add', methods=['POST'])
+def add_booking(id):
+    data = request.json
+
+    booking = Booking(
+        userId=current_user.id,
+        spotId=id,
+        startDate=data['startDate'],
+        endDate=data['endDate']
+    )
+
+    db.session.add(booking)
+    db.session.commit()
+    
+     
+    return booking.book_to_dict_inc_user()
+
+@spots_routes.route('/<int:id>/bookings/<int:bookingId>', methods=['PATCH'])
+def edit_booking(id, bookingId):
+    
+    bookingToEdit = Review.query.get(bookingId)
+    edittedBooking = request.json['reviewBody']
+    bookingToEdit.booking = edittedBooking
+    print('^^^^^^^^^^^^',bookingToEdit)
+    print('<<<<<<<<<<<<<',bookingId)
+    # print('>>>>>>>>>>>>',reviewToEdit.reviewBody)
+
+    db.session.add(bookingToEdit)
+    db.session.commit()
+   
+    return bookingToEdit.book_to_dict_inc_user()
+
+@spots_routes.route('/<int:id>/bookings/<int:bookingId>', methods=['DELETE'])
+def delete_booking(id, bookingId):
+    bookingToDelete = Booking.query.get(bookingId)
+    db.session.delete(bookingToDelete)
     db.session.commit()
     return "YES, DELETED"
