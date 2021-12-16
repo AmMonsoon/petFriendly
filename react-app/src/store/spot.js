@@ -2,11 +2,42 @@ const GET_SPOT = 'spots/GET_SPOT'
 const ALL_SPOTS = 'spots/ALL_SPOTS'
 const ADD_SPOT = 'spots/ADD_SPOT'
 const DELETE_SPOT = 'spots/DELETE_SPOT'
+
 const GET_REVIEWS = 'spots/GET_REVIEWS'
 const ADD_REVIEW = 'spots/ADD_REVIEW'
 const EDIT_REVIEW = 'spots/EDIT_ REVIEW'
 const REMOVE_REVIEW = 'spots/REMOVE_REVIEW'
 
+const GET_BOOKINGS = 'spots/GET_BOOKINGS'
+const ADD_BOOKING ='spots/ADD_BOOKING'
+const EDIT_BOOKING = 'spots/EDIT_BOOKING'
+const CANCEL_BOOKING = 'spots/CANCEL_BOOKING'
+
+const getBookings = (bookings) => ({
+    type: GET_BOOKINGS,
+    data: bookings
+})
+
+const addBooking = (booking, spotId) => ({
+    type: ADD_BOOKING,
+    data: {
+        booking,
+        spotId
+    }
+})
+
+const editBooking = (booking) => ({
+    type: EDIT_BOOKING,
+        booking
+})
+
+const deleteBooking = (bookingId, spotId) => ({
+    type: CANCEL_BOOKING,
+    data: {
+        bookingId,
+        spotId
+    }
+})
 
 const addReview = (review, spotId) => ({
     type: ADD_REVIEW,
@@ -53,7 +84,35 @@ const getReviews = (reviews) => ({
     type: GET_REVIEWS,
     data: reviews
 })
+//---------------------------BOOKINGS 
+// export const getUserBookings = (userId) => async(dispatch) => {
+//     const res = await fetch(`/api/users/${userId}`)
+//     const bookings = await res.json()
+//     dispatch(getBookings(bookings))
+//     return bookings
+// }
 
+export const getAllBookings = (spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/bookings`)
+    const bookings = await res.json()
+
+    dispatch(getBookings(bookings))
+    return bookings
+}
+export const addNewBooking = (booking, spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/bookings/add`, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(booking)
+    })
+    const newBooking = await res.json()
+    if(res.ok) {
+        dispatch(addBooking(newBooking, spotId))
+       alert("You're Booked!")
+    }
+}
+
+//----------------------------REVIEWS 
 export const deleteAReview = (reviewId, spotId) => async(dispatch) => {
     const res = await fetch(`/api/spots/${spotId}/reviews/${reviewId}`, {
         method: "DELETE"
@@ -82,6 +141,17 @@ export const getAllReviews = (spotId) => async(dispatch) => {
     return reviews
 }
 
+export const addNewReview = (review, spotId) => async(dispatch) => {
+    const res = await fetch(`/api/spots/${spotId}/reviews/add`, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify(review)
+    })
+    const newReview = await res.json()
+    dispatch(addReview(newReview, spotId))
+}
+
+//----------------------------SPOTS
 export const addNewSpot = (spotPayload) => async(dispatch) => {
     const res = await fetch('/api/spots/add', {
         method:"POST",
@@ -126,6 +196,7 @@ export const patchSpot = (price, spotId) => async(dispatch) => {
         return spot
     }
 }
+
 export const addImage = (spotId , imageUrl) => async(dispatch)=>{
     const res = await fetch(`/api/spots/${spotId}/images`, {
         method: "POST",
@@ -145,15 +216,6 @@ export const destroySpot = (spotId) => async(dispatch) => {
     return
 }
 
-export const addNewReview = (review, spotId) => async(dispatch) => {
-    const res = await fetch(`/api/spots/${spotId}/reviews/add`, {
-        method: "POST",
-        headers: { "Content-Type":"application/json" },
-        body: JSON.stringify(review)
-    })
-    const newReview = await res.json()
-    dispatch(addReview(newReview, spotId))
-}
 
 
 const initialState = {}
@@ -175,22 +237,11 @@ const spotReducer = (state = initialState, action) => {
         case DELETE_SPOT:
                 delete newState[action.spotId]
             return newState
-        case GET_REVIEWS:
-
-            // const newState = {}
-            // const reviews = action.reviews
-            // reviews.forEach(rev => {
-            //     newState[rev.id] = rev
-            // })    
-
+        case GET_REVIEWS:  
             newState.reviews = {}
-            Object.values(action.data.reviews).forEach(review => {
-                
-                // const reviewSpotId = review.spotId                
+            Object.values(action.data.reviews).forEach(review => {           
                 newState.reviews[review.id] = review
-                
             })
-
             return newState
         case ADD_REVIEW:
             newState.reviews[action.data.review.id] = action.data.review
@@ -201,7 +252,22 @@ const spotReducer = (state = initialState, action) => {
         case REMOVE_REVIEW:
             delete newState.reviews[action.data.reviewId]
             return newState
-        default: return state
+        case GET_BOOKINGS:
+            newState.bookings = {}
+            Object.values(action.data.bookings).forEach(booking => {           
+                newState.bookings[booking.id] = booking
+            })
+            return newState
+        case ADD_BOOKING:
+        newState.bookings[action.data.booking.id] = action.data.booking
+        return newState
+        case EDIT_BOOKING:
+        newState.bookings[action.booking.id] = action.booking
+        return newState
+        case CANCEL_BOOKING:
+        delete newState.bookings[action.data.bookingId]
+        return newState
+            default: return state
         }
             
 }

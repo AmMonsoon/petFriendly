@@ -12,6 +12,7 @@ import { getAllReviews } from '../store/spot';
 // import EditReviewForm from './EditReviewForm';
 import DeleteSpotModal from './DeleteSpotModal';
 import "./SingleSpot.css"
+import Booking from './Booking';
 
 const SingleSpot = () => {
     const {spotId} = useParams()
@@ -28,23 +29,12 @@ const SingleSpot = () => {
 
 
     useEffect(() => {
-       
-
         (async () => {
-
             await dispatch(fetchSpot(spotId));
             await dispatch(getAllReviews(spotId))
 
           })();
     },[spotId,dispatch])
-
-
-
-    // const deleteSpot = async(e) =>{
-    //     e.preventDefault()
-    //     await dispatch(destroySpot(spotId))
-    //     history.push('/spots')
-    // }
 
 
 
@@ -95,7 +85,10 @@ const SingleSpot = () => {
                     <h4>{spot?.name}</h4>
                     {!showEdit && <p>{spot?.price} / night</p>}
                    <div className='edit-spot-div'>{priceContent}</div>
-                   </div>     
+                   </div>  
+                   <div>
+                       <Booking />
+                   </div>   
                    <div>
                        <Review />
                        

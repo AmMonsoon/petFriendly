@@ -36,5 +36,16 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'firstName': self.firstName,
-            'lastName': self.lastName
+            'lastName': self.lastName,
         }
+    def to_dict_inc_bookings(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'booking': [bookings.book_to_dict() for bookings in self.booking]
+        }
+
+    

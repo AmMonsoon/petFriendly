@@ -24,7 +24,6 @@ def check_password_length(form,field):
 
 
 
-
 class LoginForm(FlaskForm):
     email = StringField('email', validators=[DataRequired(), user_exists, Email()])
     password = StringField('password', validators=[

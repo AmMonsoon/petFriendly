@@ -6,10 +6,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import './Spot.css'
 
 const Spot = () => {
-    // const {spotId} = useParams()
+    
     const history = useHistory()
     const dispatch = useDispatch()
-    // const user = useSelector(state => state.session.user)
     const spots = useSelector(state => Object.values(state.spots))
     
 
@@ -24,7 +23,6 @@ const handleClick = (e) =>{
 
     history.push(`/spots/${e.target.id}`)
 }
-
 
     return(
         <div className="spots-page-container">
