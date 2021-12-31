@@ -35,7 +35,7 @@ const NavBar = ({email, password, firstName, lastName, username}) => {
                
               </div>
             </NavLink>
-            {user && <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
+            { user && <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
               <div className="navbar-buttons-wrapper-button">
                 <i className="far fa-user fa-2x"></i>
               </div>
