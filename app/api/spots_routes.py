@@ -145,8 +145,8 @@ def add_booking(id):
     db.session.add(booking)
     db.session.commit()
     
-     
-    return booking.book_to_dict_inc_user()
+    print('$$$$$$$',dir(booking))
+    return booking.booking_to_dict_inc_user()
 
 @spots_routes.route('/<int:id>/bookings/<int:bookingId>', methods=['PATCH'])
 def edit_booking(id, bookingId):
@@ -163,9 +163,3 @@ def edit_booking(id, bookingId):
    
     return bookingToEdit.book_to_dict_inc_user()
 
-@spots_routes.route('/<int:id>/bookings/<int:bookingId>', methods=['DELETE'])
-def delete_booking(id, bookingId):
-    bookingToDelete = Booking.query.get(bookingId)
-    db.session.delete(bookingToDelete)
-    db.session.commit()
-    return "YES, DELETED"

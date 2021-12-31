@@ -27,22 +27,20 @@ const handleClick = (e) =>{
     return(
         <div className="spots-page-container">
             <div className='spots-wrapper'>
-            {spots && spots?.map(spot =>               
-                    <div className='spots-div' key={spot?.id}  >
-                        {/* <h4>{spot.name}</h4> */}
+            {spots && spots?.map((spot, i )=>               
+                    <div className='spots-div' key={i}  >
+                        
                       {spot?.image?.length && <img src={spot?.image[0]?.imageUrl} onClick={handleClick} id={spot.id} alt=''  /> }         
-                        {/* <h3>{spot.address}</h3> */}
+                       
                         
                         <p id='spot-location'>{spot.city}, {spot.state}</p>
                         <div id='spot-price' >
                         <p>{spot.price} / night</p> 
                         </div>
-                        {/* <p>{spot.country}</p> */}
+                       
                         
-                                     
                     </div>
-                
-                )}
+            )}
             </div>
         </div>
     )

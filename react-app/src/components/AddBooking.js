@@ -1,16 +1,16 @@
 import React,{useState} from 'react';
 import {  useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { addImage, addNewBooking } from '../store/spot';
-import Booking from './Booking';
+import { useHistory, useParams } from 'react-router-dom';
+import { addNewBooking } from '../store/spot';
+import { authenticate } from '../store/session';
 
 const AddBooking = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(new Date())
     const [confirmation, setConfirmation] = useState('')
     const {spotId} = useParams()
-    const spots = useSelector(state => state.spots)
     const user = useSelector(state => state.session.user)
 
 
@@ -27,6 +27,8 @@ const AddBooking = () => {
         }
 
         let newBooking = await dispatch(addNewBooking(booking, spotId))
+        await dispatch(authenticate())
+        history.push(`/spots/${spotId}`)
         if(newBooking){
             alert("You're Booked")
         }

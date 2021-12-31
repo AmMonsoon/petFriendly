@@ -31,6 +31,7 @@ function App() {
   return (
     <BrowserRouter>
       {/* <NavBar /> */}
+        <NavBar userId={currentUser?.id}/>
     <div className='page-container'>
       <Switch>
         {/* <Route path='/login' exact={true}>
@@ -44,34 +45,33 @@ function App() {
 
         </Route> */}
         <ProtectedRoute path='/users' exact={true} >
-        <NavBar userId={currentUser?.id}/>
 
           <UsersList/>
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
-        <NavBar userId={currentUser?.id}/>
+        {/* <NavBar userId={currentUser?.id}/> */}
 
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-        <NavBar userId={currentUser?.id}/>
+        {/* <NavBar userId={currentUser?.id}/> */}
           
           <Home />
         </Route>
         <ProtectedRoute path='/spots' exact={true}>
-          <NavBar userId={currentUser?.id}/>
+          {/* <NavBar userId={currentUser?.id}/> */}
           <Spot />
         </ProtectedRoute>
         <ProtectedRoute path='/spots/add' exact={true}>
-          <NavBar userId={currentUser?.id}/>
+          {/* <NavBar userId={currentUser?.id}/> */}
           <CreateSpot />
         </ProtectedRoute>
         <ProtectedRoute path='/spots/:spotId' exact={true}>
-        <NavBar userId={currentUser?.id}/>
+        {/* <NavBar userId={currentUser?.id}/> */}
           <SingleSpot />
         </ProtectedRoute>
         <ProtectedRoute path='/spots/:spotId/reviews' exact={true}>
-        <NavBar userId={currentUser?.id}/>
+        {/* <NavBar userId={currentUser?.id}/> */}
           <SingleSpot />
         </ProtectedRoute>
       </Switch>

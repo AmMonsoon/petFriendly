@@ -11,7 +11,6 @@ const REMOVE_REVIEW = 'spots/REMOVE_REVIEW'
 const GET_BOOKINGS = 'spots/GET_BOOKINGS'
 const ADD_BOOKING ='spots/ADD_BOOKING'
 const EDIT_BOOKING = 'spots/EDIT_BOOKING'
-const CANCEL_BOOKING = 'spots/CANCEL_BOOKING'
 
 const getBookings = (bookings) => ({
     type: GET_BOOKINGS,
@@ -26,18 +25,8 @@ const addBooking = (booking, spotId) => ({
     }
 })
 
-const editBooking = (booking) => ({
-    type: EDIT_BOOKING,
-        booking
-})
 
-const deleteBooking = (bookingId, spotId) => ({
-    type: CANCEL_BOOKING,
-    data: {
-        bookingId,
-        spotId
-    }
-})
+
 
 const addReview = (review, spotId) => ({
     type: ADD_REVIEW,
@@ -111,6 +100,7 @@ export const addNewBooking = (booking, spotId) => async(dispatch) => {
        alert("You're Booked!")
     }
 }
+
 
 //----------------------------REVIEWS 
 export const deleteAReview = (reviewId, spotId) => async(dispatch) => {
@@ -259,17 +249,15 @@ const spotReducer = (state = initialState, action) => {
             })
             return newState
         case ADD_BOOKING:
-        newState.bookings[action.data.booking.id] = action.data.booking
-        return newState
+            newState.bookings[action.data.booking.id] = action.data.booking
+            return newState
         case EDIT_BOOKING:
-        newState.bookings[action.booking.id] = action.booking
-        return newState
-        case CANCEL_BOOKING:
-        delete newState.bookings[action.data.bookingId]
-        return newState
-            default: return state
-        }
-            
+            newState.bookings[action.booking.id] = action.booking
+            return newState
+        
+        default: 
+            return state
+        }   
 }
 
 export default spotReducer;
