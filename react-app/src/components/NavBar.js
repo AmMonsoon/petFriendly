@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 const NavBar = ({email, password, firstName, lastName, username}) => {
   const user = useSelector(state => state.session.user)
-
+  
   return (
     <div className="navbar-container">
       <div className="navbar-wrapper">
@@ -35,12 +35,11 @@ const NavBar = ({email, password, firstName, lastName, username}) => {
                
               </div>
             </NavLink>
-          <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
+            { user && <NavLink to={`/users/${user.id}`} exact={true} activeClassName='active'>
               <div className="navbar-buttons-wrapper-button">
                 <i className="far fa-user fa-2x"></i>
-                
               </div>
-            </NavLink>
+            </NavLink>}
             
           <div className='login-form-btn'>
            {!user &&  <LoginModal login={true} email={email} password={password} /> }

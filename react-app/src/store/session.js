@@ -12,13 +12,6 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
-const deleteBooking = (userId, bookingId) => ({
-  type: CANCEL_BOOKING,
-  data: {
-      userId,
-      bookingId
-  }
-})
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
@@ -32,7 +25,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+    
     dispatch(setUser(data));
   }
 }
@@ -62,8 +55,15 @@ export const login = (email, password) => async (dispatch) => {
   } else {
     return ['An error occurred. Please try again.']
   }
-
+  
 }
+const deleteBooking = (userId, bookingId) => ({
+  type: CANCEL_BOOKING,
+  data: {
+      userId,
+      bookingId
+  }
+})
 
 export const logout = () => async (dispatch) => {
   const response = await fetch('/api/auth/logout', {
