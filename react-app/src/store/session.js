@@ -1,6 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const CANCEL_BOOKING = 'spots/CANCEL_BOOKING'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -11,6 +12,13 @@ const removeUser = () => ({
   type: REMOVE_USER,
 })
 
+const deleteBooking = (userId, bookingId) => ({
+  type: CANCEL_BOOKING,
+  data: {
+      userId,
+      bookingId
+  }
+})
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
@@ -69,6 +77,14 @@ export const logout = () => async (dispatch) => {
   }
 };
 
+export const deleteABooking = (userId, bookingId) => async(dispatch) => {
+  const res = await fetch(`/api/users/${userId}/bookings/${bookingId}`, {
+      method: "DELETE"
+  })
+  if(res.ok) {
+      dispatch(deleteBooking(userId, bookingId))
+  }
+}
 
 export const signUp = (username,firstName, lastName, email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/signup', {
@@ -100,11 +116,15 @@ export const signUp = (username,firstName, lastName, email, password) => async (
 }
 
 export default function reducer(state = initialState, action) {
+  let newState = {...state}
   switch (action.type) {
     case SET_USER:
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case CANCEL_BOOKING:
+        newState.user.booking = newState.user.booking.filter(book => book.id !== action.data.bookingId)
+        return newState
     default:
       return state;
   }
