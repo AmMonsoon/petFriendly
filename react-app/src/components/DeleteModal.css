@@ -1,0 +1,8 @@
+.single-review-delete-btn{
+    color:red;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    
+}

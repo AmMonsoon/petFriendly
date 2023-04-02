@@ -1,0 +1,57 @@
+.spots-display{
+    /* display: flex;
+    padding: 0;
+    padding-left: 1em;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    margin: 0; */
+    width: 80vw;
+    
+}
+
+
+.spots-wrapper{
+   
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 4%;
+    margin-top: 5px;
+    margin-bottom: -2%;
+    grid-template-areas: 
+    "photo photo photo photo photo" 
+    "photo photo photo photo photo" 
+    "photo photo photo photo photo"
+       
+}
+
+
+.spots-div img{
+    width: 110%;
+    height: 75%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.spots-div img:hover{
+cursor: pointer;
+}
+
+#spot-location{
+    font-weight: bold;
+}
+    /* display: block;
+    object-fit: cover;
+    margin-top: 1em;
+    width: 100%;
+    
+   
+    border-radius: 5px;
+    height: auto;
+     */
+
+
+
+
+

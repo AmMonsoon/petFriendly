@@ -1,0 +1,37 @@
+.add-review-textbox{
+    resize: none;
+    height: 100px;
+    width: 330px;
+    line-height: 24px;
+    border: 1px solid silver;
+    background-color: rgb(231, 230, 230);
+    border-radius: 5px;
+
+}
+.post-review-display{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.add-review-submit{
+    background-color: rgb(255, 0, 21);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    max-width: 52px;
+}
+
+
+.add-review-submit:enabled{
+    background-color: rgb(0, 204, 255);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}

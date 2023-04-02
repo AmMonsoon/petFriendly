@@ -1,0 +1,49 @@
+/* #edit-submit-btn{
+    background-color: transparent;
+    border: none;
+
+} */
+
+
+.toggle-edit-btn{
+    color: blue;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
+.edit-review-textbox{
+    resize: none;
+    height: 100px;
+    width: 95%;
+    margin: 10px;
+    border: 1px solid silver;
+    background-color: rgb(231, 230, 230);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    font-weight: 500;
+    border-radius: 5px;
+    line-height: 24px;
+    font-size: 16px;
+}
+.edit-buttons button{
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.edit-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#edit-submit-btn {
+    background-color: #3ab122;
+    border-radius: 5px;
+    margin-right: 16px;
+}
+#edit-cancel-btn {
+    background-color: crimson;
+    border-radius: 5px;
+}

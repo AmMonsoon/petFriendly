@@ -1,0 +1,194 @@
+
+#modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  #modal-content {
+    position: absolute;
+    
+    /* background-color:white; */
+  }
+
+/* .login-section-container > * {
+    margin-bottom: 4em;
+    
+} */
+
+.logo-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.login-page-container{
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border-radius: 20px;
+padding: 10% 10% 15%;
+margin-bottom: 10em; 
+height: fit-content;
+width: 355px;
+background-color: rgb(240, 245, 244);
+box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.login-section-container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.login-section-container label{
+float: left;
+
+}
+
+/* .modal-btns{
+  display: flex;
+  margin-top: 20px;
+} */
+
+
+.login-logo {
+ object-fit: cover;
+ border-radius: 50px;
+ width: 100px;
+ height: 100px;
+}
+
+
+.form-errors{
+  margin: 5px 0 15px;
+  font-weight: 500;
+  font-size: 16px;
+  color: red;
+}
+.login-page-container input{
+  /* float: right; */
+  padding-top: 5px;
+  /* margin: 5px;; */
+  margin-bottom: 2px;
+  justify-content: space-between;
+}
+
+.delete-confirm{
+/* padding: 10% 35% 15%; 
+margin: 10%;
+
+height: fit-content;
+width: 200px;
+background-color: rgb(240, 245, 244);
+box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+border-radius: 5px; */
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
+/* align-items: center; */
+justify-content: center;
+align-items: center;
+border-radius: 20px;
+padding: 10% 10% 15%;
+margin-bottom: 10em; 
+height: fit-content;
+width: 355px;
+background-color: rgb(240, 245, 244);
+box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.delete-confirm h2{
+  margin-left: 20px;
+  
+}
+.delete-modal-btn-container{
+  display: flex;
+  justify-content: center;
+}
+.delete-modal-btn-container button{
+  color: white;
+  border: 1px solid rgb(153, 152, 152);
+  border-radius: 5px;
+  padding: 4%;
+  cursor: pointer;
+}
+.delete-modal-confirm-btn{ 
+  margin: 0 5px;
+  background-color: crimson;
+}
+.delete-modal-cancel-btn{
+  margin: 0 5px;
+  background-color: darkgrey;
+}
+.delete-modal-image img{
+  object-fit: cover;
+  margin-left: 20px;
+  height: 155px;
+    width: 220px;
+    border-radius: 54px;
+}
+
+.sign-up-button{
+  background-color: rgb(0, 204, 255);
+  border-radius: 5px;
+  margin: 2px;
+  color: white;
+  height: 28px;
+  width: 70px;
+  text-shadow:  
+  -1px -1px 0 black,
+  0   -1px 0 black,
+  1px -1px 0 black,
+  1px  0   0 black,
+  1px  1px 0 black,
+  0    1px 0 black,
+ -1px  1px 0 black,
+ -1px  0   0 black;
+}
+.modal-btns{
+  display: flex;
+  flex-direction: column;
+  
+}
+.modal-btns button{
+  background-color: rgb(0, 204, 255);
+  border-radius: 5px;
+  margin: 2px;
+  color: white;
+  height: 28px;
+  width: 70px;
+  text-shadow:  
+  -1px -1px 0 black,
+  0   -1px 0 black,
+  1px -1px 0 black,
+  1px  0   0 black,
+  1px  1px 0 black,
+  0    1px 0 black,
+ -1px  1px 0 black,
+ -1px  0   0 black;
+}
+
+.single-spot-delete-btn{
+  background-color: crimson;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
